@@ -1,6 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Protest+Riot&family=Ubuntu:wght@300;400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Charm&family=Cutive+Mono&family=Montserrat&family=Protest+Riot&family=Ubuntu:wght@300;400;500&display=swap');
-
+:root {
+    --rosadito: #F4A9CA;
+    --dark-rosadito: #75485B;
+    --verdito: #A9F5AC;
+    --dark-verdito: #7CA07D;
+    --dark-verdito-transparent: #7CA07D5D;
+    --grisito: #B59CA7;
+}
 
 * {
     margin: 0;
@@ -8,15 +15,44 @@
 }
 
 body {
-    background-color: #a9f5ac5d;
+    background-color: var(--dark-verdito-transparent);
 }
 
 header {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     padding: 0.5rem 1rem;
-    background-color: #75485b;
-    color: #f4a9ca;
+    background-color: var(--dark-rosadito);
+    color: var(--rosadito);
+}
+
+summary {
+    cursor: pointer;
+    list-style: none;
+}
+
+header details[open] .oferta {
+    color: red;
+}
+
+.menu {
+    position: absolute;
+    transform: translateY(14px);
+    background-color: var(--dark-rosadito);
+    line-height: 2;
+    padding: 0 2rem;
+    height: 100vh;
+    left: 0;
+    z-index: 1;
+    /* border-top: 1px black solid; */
+}
+
+.menu .material-symbols-outlined {
+    font-size: 1.2rem;
+}
+
+.menu p {
+    padding-left: 10px;
 }
 
 header img {
@@ -40,8 +76,13 @@ header img {
 }
 
 .head-1 hr {
-    color: #f4a9ca;
+    color: var(--rosadito);
     height: 2.5rem;
+}
+
+.logo img {
+    height: 4rem;
+    width: 4rem;
 }
 
 .logo {
@@ -49,7 +90,7 @@ header img {
     align-items: center;
     font-family: 'Protest Riot', sans-serif;
     /* font-family: 'Ubuntu', sans-serif; */
-    font-size: 20px;
+    font-size: 25px;
 }
 
 header label {
@@ -61,18 +102,19 @@ header label {
 }
 
 #busqueda {
-    background-color: #a9f5ac;
+    background-color: var(--verdito);
     background-position-y: center;
     background-position-x: 5px;
     margin: 5px;
     margin-right: 15px;
     padding: 5px 10px;
     padding-left: 35px;
-    border-radius: 15px;
+    border-radius: 20px;
     background-image: url(../img/lupita.png);
     background-repeat: no-repeat;
     outline: none;
-    border: #f4a9ca 3px solid;
+    border: var(--rosadito) 3px solid;
+    width: 15rem;
 }
 
 #busqueda:placeholder-shown {
@@ -80,3 +122,206 @@ header label {
     font-size: 16px;
 }
 
+.oferta {
+    display: flex;
+    justify-content: center;
+    background-color: var(--dark-verdito);
+    color: white;
+    padding: 0.5rem;
+    height: 1rem;
+    transition: color 1s, height 1s, font-size 1s, background-color 1s; 
+}
+
+.oferta:hover {
+    height: 2rem;
+    font-size: 20px;
+    background-color: var(--verdito);
+    color: var(--dark-verdito);
+}
+
+.oferta span {
+    font-size: 1rem;
+    transition: all 1s;
+}
+
+.oferta span:hover {
+    transform: scale(2) translateX(-5px);
+}
+
+.contenedor {
+    padding: 60px 120px;
+}
+
+.d-contenedor {
+    display: grid;
+    grid-template-columns: 2fr 6fr;
+}
+
+.opciones {
+    margin-top: 2rem;
+    position: sticky;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}
+
+.opciones ul {
+    list-style-type: none;
+    transform: translateX(2rem);
+}
+
+.opciones summary {
+    transform: translateX(1rem);
+}
+
+.dd-filtro li {
+    transform: translateX(2rem);
+}
+
+/* .opciones summary::before {
+    content: '- ';
+    position: absolute;
+} */
+
+.abriguitos {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.item {
+    height: 22rem;
+    border: var(--dark-rosadito) 2px solid;
+    padding: 0.75rem;
+    box-shadow: 0 0 2px var(--dark-rosadito);
+    background-color: #f4a9ca31;
+    border-radius: 5px;
+    transition: all 10ms;
+}
+
+.item:hover {
+    box-shadow: 0 0 20px var(--dark-rosadito);
+    transform: scale(1.01, 1.01);
+}
+
+.icon-item {
+    display: flex;
+    color: var(--dark-verdito);
+}
+
+.item img {
+    display: flex;
+    width: 80%;
+    padding: 0 10%;
+    border-radius: 4rem;
+}
+
+.icon-item-corazon {
+    display: flex;
+}
+
+/* .corazon {
+    opacity: 0;
+    width: 2em;
+    height: 2em;
+    z-index: 1;
+    position: relative;
+}
+
+.corazon:checked + label::before{
+    content: url(../img/corazon+.svg);
+    
+}
+
+.corazon + label::before{
+    content: url(../img/corazon.svg);
+    filter: invert(1);
+    position:absolute;
+    transform: translateX(-100%);
+}  */
+
+.corazon-1 {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    height: 2rem;
+    width: 2rem;
+    margin-left: 10rem;
+}
+
+#heart {
+    position: absolute;
+    left: -100vw;
+  }
+  
+  .heart {
+    color: var(--grisito);
+    cursor: pointer;
+    font-size: 2rem;
+    align-self: center;  
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .heart:hover {
+    color: var(--dark-verdito);
+    transform: scale(1.1);
+  }
+  
+  .heart::selection {
+    color: none;
+    background: transparent;
+  }
+  
+  .heart::moz-selection {
+    color: none;
+    background: transparent;
+  }
+  
+  #heart:checked + label {
+    color: rgb(223, 0, 0);
+    will-change: font-size;
+    animation: heart 0.5s cubic-bezier(0.5, 0.75, 0.5, 2);
+  }
+  
+  @keyframes heart {0%, 25% {font-size: 0;}}
+
+.item h3 {
+    display: flex;
+    justify-content: center;
+}
+
+#precio {
+    display: flex;
+    justify-content: end;
+    color: var(--dark-rosadito);
+    margin: 1rem 0;
+    font-weight: 900;
+    transform: translateX(-1rem);
+    /* text-shadow: 0 0 1px black */
+}
+
+.especificaciones {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    font-size: 1rem;
+    font-weight: 900;
+    color: var(--dark-verdito);
+    bottom: 0px;
+}
+
+
+
+/* .especificaciones p:nth-child(2)  {
+    transform: translateX(-1rem);
+}
+
+.especificaciones p:nth-child(3)  {
+    transform: translateX(-2rem);
+}
+
+.especificaciones p:nth-child(4)  {
+    transform: translateX(-3rem);
+} */
