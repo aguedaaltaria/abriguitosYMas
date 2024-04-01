@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="../css/abrigo-1.css">
 </head>
 <body>
-    <header> 
+    <div class="container">
+    <header id="header"> 
         <div class="head-1">
             <div class="iconos-head">
-                <details>
+                <details class="detail-container">
                     <summary>
                         <span class="material-symbols-outlined">
                             menu
@@ -62,7 +63,9 @@
             <div class="opciones">
                 <h2>Opciones</h2>
                 <br>
-                <details>
+                <h3><label for="checkbox-1" class="Todo">
+                    <input type="checkbox"><span>Todo</span></h3>
+                <details open>
                     <summary>
                         <h3>Filtro</h3>
                     </summary>
@@ -216,7 +219,7 @@
                         </ul>
                     </div>
                 </details>
-                <details>
+                <details open>
                     <summary>
                         <h3>Ordernar por</h3>
                     </summary>
@@ -244,12 +247,16 @@
                     <div class="item">
                         <div class="icon-item-corazon">
                             <div class="icon-item">
+                                <button class="carritoAniadir">
                                 <span class="material-symbols-outlined shopping-cart-item">
                                     add_shopping_cart
                                     </span>
+                                </button>
+                                <button class="carritoAniadir">
                                 <span class="material-symbols-outlined lista-item">
                                     list_alt
                                     </span>
+                                </button>
                             </div>
                             <div class="corazon-1">
                                 <input id="heart" type="checkbox" />
@@ -257,7 +264,7 @@
                                 <!-- <input type="checkbox" class="corazon"><label></label> -->
                             </div>
                         </div>
-                        <img src="../img/abrigo-ej.jpg" alt="">
+                        <div class="imagen"><img src="../img/abrigo-gris.jpg" alt=""></div>
                         <h3><center>Abrigo ejemplo ejemplo ejemplo ejemplo </center></h3>
                         <p id="precio">$30.00</p>
                         <div class="especificaciones">
@@ -266,14 +273,156 @@
                             <p>Color</p>
                         </div>
                     </div>
-                    <div class="item"></div>
-                    <div class="item"></div>
-                    <div class="item"></div>
-                    <div class="item"></div>
-                    <div class="item"></div>
+                    <div class="item">
+                        <div class="icon-item-corazon">
+                            <div class="icon-item">
+                                <button class="carritoAniadir">
+                                <span class="material-symbols-outlined shopping-cart-item">
+                                    add_shopping_cart
+                                    </span>
+                                </button>
+                                <button class="carritoAniadir">
+                                <span class="material-symbols-outlined lista-item">
+                                    list_alt
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="corazon-1">
+                                <input id="heart" type="checkbox" />
+                                <label for="heart" class="heart">❤</label>
+                                <!-- <input type="checkbox" class="corazon"><label></label> -->
+                            </div>
+                        </div>
+                        <div class="imagen"><img src="../img/abrigorosa" alt=""></div>
+                        <h3><center>Abrigo ejemplo ejemplo ejemplo ejemplo </center></h3>
+                        <p id="precio">$30.00</p>
+                        <div class="especificaciones">
+                            <p>Size</p>
+                            <p>Tipo</p>
+                            <p>Color</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="icon-item-corazon">
+                            <div class="icon-item">
+                                <button class="carritoAniadir">
+                                <span class="material-symbols-outlined shopping-cart-item">
+                                    add_shopping_cart
+                                    </span>
+                                </button>
+                                <button class="carritoAniadir">
+                                <span class="material-symbols-outlined lista-item">
+                                    list_alt
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="corazon-1">
+                                <input id="heart" type="checkbox" />
+                                <label for="heart" class="heart">❤</label>
+                                <!-- <input type="checkbox" class="corazon"><label></label> -->
+                            </div>
+                        </div>
+                        <div class="imagen"><img src="../img/abrigo-ej.jpg" alt=""></div>
+                        <h3><center>Abrigo ejemplo ejemplo ejemplo ejemplo </center></h3>
+                        <p id="precio">$30.00</p>
+                        <div class="especificaciones">
+                            <p>Size</p>
+                            <p>Tipo</p>
+                            <p>Color</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="icon-item-corazon">
+                            <div class="icon-item">
+                                <button class="carritoAniadir">
+                                <span class="material-symbols-outlined shopping-cart-item">
+                                    add_shopping_cart
+                                    </span>
+                                </button>
+                                <button class="carritoAniadir">
+                                <span class="material-symbols-outlined lista-item">
+                                    list_alt
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="corazon-1">
+                                <input id="heart" type="checkbox" />
+                                <label for="heart" class="heart">❤</label>
+                                <!-- <input type="checkbox" class="corazon"><label></label> -->
+                            </div>
+                        </div>
+                        <div class="imagen"><img src="../img/abrigo-rojo.jpg" alt=""></div>
+                        <h3><center>Abrigo ejemplo ejemplo ejemplo ejemplo </center></h3>
+                        <p id="precio">$30.00</p>
+                        <div class="especificaciones">
+                            <p>Size</p>
+                            <p>Tipo</p>
+                            <p>Color</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="icon-item-corazon">
+                            <div class="icon-item">
+                                <button class="carritoAniadir">
+                                <span class="material-symbols-outlined shopping-cart-item">
+                                    add_shopping_cart
+                                    </span>
+                                </button>
+                                <button class="carritoAniadir">
+                                <span class="material-symbols-outlined lista-item">
+                                    list_alt
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="corazon-1">
+                                <input id="heart" type="checkbox" />
+                                <label for="heart" class="heart">❤</label>
+                                <!-- <input type="checkbox" class="corazon"><label></label> -->
+                            </div>
+                        </div>
+                        <div class="imagen"><img src="../img/abrigo-ej.jpg" alt=""></div>
+                        <h3><center>Abrigo ejemplo ejemplo ejemplo ejemplo </center></h3>
+                        <p id="precio">$30.00</p>
+                        <div class="especificaciones">
+                            <p>Size</p>
+                            <p>Tipo</p>
+                            <p>Color</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="icon-item-corazon">
+                            <div class="icon-item">
+                                <button class="carritoAniadir">
+                                <span class="material-symbols-outlined shopping-cart-item">
+                                    add_shopping_cart
+                                    </span>
+                                </button>
+                                <button class="carritoAniadir">
+                                <span class="material-symbols-outlined lista-item">
+                                    list_alt
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="corazon-1">
+                                <input id="heart" type="checkbox" />
+                                <label for="heart" class="heart">❤</label>
+                                <!-- <input type="checkbox" class="corazon"><label></label> -->
+                            </div>
+                        </div>
+                        <div class="imagen"><img src="../img/abrigo-ej.jpg" alt=""></div>
+                        <h3><center>Abrigo ejemplo ejemplo ejemplo ejemplo </center></h3>
+                        <p id="precio">$30.00</p>
+                        <div class="especificaciones">
+                            <p>Size</p>
+                            <p>Tipo</p>
+                            <p>Color</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+    <script src="../js/abrigo-1.js"></script>
 </body>
 </html>

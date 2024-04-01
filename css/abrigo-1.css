@@ -5,7 +5,7 @@
     --dark-rosadito: #75485B;
     --verdito: #A9F5AC;
     --dark-verdito: #7CA07D;
-    --dark-verdito-transparent: #7CA07D5D;
+    --dark-verdito-transparent: #7ca07d7e;
     --grisito: #B59CA7;
 }
 
@@ -31,9 +31,13 @@ summary {
     list-style: none;
 }
 
-header details[open] .oferta {
-    color: red;
+/* .container {
+    opacity: 1;
 }
+
+.container.open:not(.detail-container) {
+    opacity: 0.1;
+} */
 
 .menu {
     position: absolute;
@@ -196,14 +200,16 @@ header label {
     border: var(--dark-rosadito) 2px solid;
     padding: 0.75rem;
     box-shadow: 0 0 2px var(--dark-rosadito);
-    background-color: #f4a9ca31;
-    border-radius: 5px;
-    transition: all 10ms;
+    background-color: #f4a9ca67;
+    border-radius: 1rem;
+    transition: all 50ms, opacity 50ms;
+    opacity: 0.7;
 }
 
 .item:hover {
     box-shadow: 0 0 20px var(--dark-rosadito);
     transform: scale(1.01, 1.01);
+    opacity: 1;
 }
 
 .icon-item {
@@ -211,11 +217,39 @@ header label {
     color: var(--dark-verdito);
 }
 
+.carritoAniadir span {
+    color: var(--dark-verdito);
+}
+
+.carritoAniadir {
+    border: none;
+    background-color: #f4a9ca31;
+    border-radius: 1rem;
+}
+
+.carritoAniadir:hover {
+    background-color: #ee80b031;
+    border-radius: 0.5rem;
+}
+
+.carritoAniadir:active {
+    transform: scale(0.9);
+}
+
+.imagen {
+    height: 12rem;
+    width: 10rem;
+    padding: 0 2rem;
+    overflow: hidden;
+    border-bottom-right-radius: 5rem;
+    border-top-left-radius: 4rem;
+}
+
 .item img {
     display: flex;
-    width: 80%;
-    padding: 0 10%;
-    border-radius: 4rem;
+    width: 11rem;
+    border-bottom-right-radius: 5rem;
+    border-top-left-radius: 4rem;
 }
 
 .icon-item-corazon {
