@@ -240,7 +240,7 @@ header label {
     height: 12rem;
     width: 10rem;
     padding: 0 2rem;
-    overflow: hidden;
+    /* overflow: hidden; */
     border-bottom-right-radius: 5rem;
     border-top-left-radius: 4rem;
 }
@@ -248,82 +248,96 @@ header label {
 .item img {
     display: flex;
     width: 11rem;
+    height: 12rem;
     border-bottom-right-radius: 5rem;
     border-top-left-radius: 4rem;
+    aspect-ratio: 1.5;
 }
 
 .icon-item-corazon {
     display: flex;
 }
 
-/* .corazon {
-    opacity: 0;
-    width: 2em;
-    height: 2em;
-    z-index: 1;
-    position: relative;
-}
-
-.corazon:checked + label::before{
-    content: url(../img/corazon+.svg);
-    
-}
-
-.corazon + label::before{
-    content: url(../img/corazon.svg);
-    filter: invert(1);
-    position:absolute;
-    transform: translateX(-100%);
-}  */
-
 .corazon-1 {
     display: flex;
     justify-content: center;
-    margin: 0;
-    height: 2rem;
-    width: 2rem;
+    margin: 5px;
+    height: 1rem;
+    width: 1rem;
     margin-left: 10rem;
 }
 
-#heart {
-    position: absolute;
-    left: -100vw;
-  }
-  
-  .heart {
-    color: var(--grisito);
+.corazon-1 label {
+    display: inline-block;
+    position: relative;
+    width: 1rem;
+    height: 1rem;
     cursor: pointer;
-    font-size: 2rem;
-    align-self: center;  
-    transition: color 0.2s ease-in-out;
-  }
-  
-  .heart:hover {
-    color: var(--dark-verdito);
-    transform: scale(1.1);
-  }
-  
-  .heart::selection {
-    color: none;
-    background: transparent;
-  }
-  
-  .heart::moz-selection {
-    color: none;
-    background: transparent;
-  }
-  
-  #heart:checked + label {
-    color: rgb(223, 0, 0);
-    will-change: font-size;
-    animation: heart 0.5s cubic-bezier(0.5, 0.75, 0.5, 2);
-  }
-  
-  @keyframes heart {0%, 25% {font-size: 0;}}
+    transform: rotate(-45deg);
+    background-color: var(--grisito);
+    transition: background-color 0.2s;
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(-45deg) scale(0.8);
+    }
+    70% {
+        transform: rotate(-45deg) scale(1.2);
+    }
+    100% {
+        transform: rotate(-45deg) scale(1);
+    }
+}
+
+.corazon-1 label::before {
+    content: '';
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    top: -0.5rem;
+    background-color: var(--grisito);
+    border-radius: 50%;
+    display: block;
+    transition: background-color 0.2s;
+}
+
+.corazon-1 label::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    right: -0.5rem;
+    background-color: var(--grisito);
+    transform: rotate(-45deg);
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.heart:checked ~ .label {
+    background-color: red;
+    animation: animate 0.5s linear;
+}
+
+.heart:checked ~ .label::after {
+    background-color: #ff0000;
+}
+
+.heart:checked ~ .label::before {
+    background-color: red;
+}
+
+.heart { 
+    /* opacity: 0; */
+    display: none;
+}
 
 .item h3 {
     display: flex;
     justify-content: center;
+    height: 2.5rem;
+    align-items: center;
 }
 
 #precio {
@@ -343,9 +357,24 @@ header label {
     font-size: 1rem;
     font-weight: 900;
     color: var(--dark-verdito);
-    bottom: 0px;
+    bottom: 10px;
+    /* transform: translate(0, -0.4rem); */
 }
 
+.especificaciones p {
+    display: flex;
+    /* justify-content: center; */
+}
+
+.especificaciones select {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    color: black;
+    font-size: 0.7rem;
+}
 
 
 /* .especificaciones p:nth-child(2)  {
