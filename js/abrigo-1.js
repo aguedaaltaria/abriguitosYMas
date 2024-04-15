@@ -8,7 +8,8 @@ function crearTarjetas(productos) {
         const nuevoAbrigo = document.createElement("div");
         nuevoAbrigo.classList = "item";
         nuevoAbrigo.innerHTML = `
-        
+
+<div class="elemento ${producto.color}">     
     <div class="icon-item-corazon">
         <div class="icon-item">
             <button class="carritoAniadir">
@@ -32,6 +33,7 @@ function crearTarjetas(productos) {
     </div>
     <h3><center>${producto.nombre}</center></h3>
     <p id="precio">$${producto.precio}.00</p>
+    <p class="marca">${producto.marca}</p>
     <div class="especificaciones">
         <div id="size">
             <p>Size</p>
@@ -58,6 +60,7 @@ function crearTarjetas(productos) {
             </select>
         </div>
     </div>
+</div>
 
         `
         contenedorTargetas.appendChild(nuevoAbrigo);
@@ -65,3 +68,45 @@ function crearTarjetas(productos) {
 }
 
 crearTarjetas(abrigos);
+
+function hola() {
+    let checkbox = document.getElementById("checkboxTodo");
+    if (checkbox.checked) {
+        alert ("hi");
+    } else {
+    
+        alert ("adios")
+    }
+}
+
+function color(color) {
+    let elementos = contenedorTargetas.querySelectorAll(".item");
+    let checkbox = document.getElementsByClassName("checkboxcolor");
+    let arrCheckbox = Array.from(checkbox);
+    let checkedColors = arrCheckbox.filter((checkedColor) => {
+        if (checkedColor.checked) {
+            return true
+        } else {
+            return false
+        }
+    })
+    checkedColors = checkedColors.map((valor) => {return valor.value}); 
+
+    elementos.forEach(elemento => {
+        elemento.style.display = "none";
+    })
+
+    elementos.forEach(elemento => {
+        checkedColors.forEach(checkedColor => {
+            if(elemento.textContent.toLowerCase().includes(checkedColor)) {
+                elemento.style.display = "block";
+            }
+        }) 
+    })
+
+    if (checkedColors.length == 0) {
+        elementos.forEach(elemento => {
+            elemento.style.display = "block";
+        })
+    }
+}

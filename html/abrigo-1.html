@@ -65,8 +65,8 @@
             <div class="opciones">
                 <h2>Opciones</h2>
                 <br>
-                <h3><label for="checkbox-1" class="Todo">
-                    <input type="checkbox"><span>Todo</span></h3>
+                <h3><label for="checkboxTodo" class="checkbox-label">
+                    <input type="checkbox" id="checkboxTodo" onchange="hola()"> <span class="diseniocheck"></span>Todo</label></h3>
                 <details open>
                     <summary>
                         <h3>Filtro</h3>
@@ -77,20 +77,20 @@
                                 <details>
                                     <summary>Precio</summary>
                                     <li>
-                                        <label for="checkbox-1" class="checkbox-label">
-                                        <input type="checkbox">
+                                        <label for="checkbox1precio" class="checkbox-label">
+                                        <input class="checkbox" type="checkbox" id="checkbox1precio"><span class="diseniocheck"></span>
                                         <span>$</span>
                                         </label>
                                     </li>
                                     <li>
-                                        <label for="checkbox-1" class="checkbox-label">
-                                        <input type="checkbox">
+                                        <label for="checkbox2precio" class="checkbox-label">
+                                        <input class="checkbox" type="checkbox" id="checkbox2precio"><span class="diseniocheck"></span>
                                         <span>$$</span>
                                         </label>
                                     </li>
                                     <li>
-                                        <label for="checkbox-1" class="checkbox-label">
-                                        <input type="checkbox">
+                                        <label for="checkbox3precio" class="checkbox-label">
+                                        <input class="checkbox" type="checkbox" id="checkbox3precio"><span class="diseniocheck"></span>
                                         <span>$$$</span>
                                         </label>
                                     </li>
@@ -100,20 +100,20 @@
                                 <details>
                                     <summary>Marca</summary>
                                     <li>
-                                        <label for="checkbox-1" class="checkbox-label">
-                                        <input type="checkbox">
+                                        <label for="checkbox1marca" class="checkbox-label">
+                                        <input class="checkbox" type="checkbox" id="checkbox1marca"><span class="diseniocheck"></span>
+                                        <span>Glamour</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label for="checkbox2marca" class="checkbox-label">
+                                        <input class="checkbox" id="checkbox2marca"type="checkbox"><span class="diseniocheck"></span>
                                         <span>.</span>
                                         </label>
                                     </li>
                                     <li>
-                                        <label for="checkbox-1" class="checkbox-label">
-                                        <input type="checkbox">
-                                        <span>.</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label for="checkbox-1" class="checkbox-label">
-                                        <input type="checkbox">
+                                        <label for="checkbox3marca" class="checkbox-label">
+                                        <input class="checkbox" type="checkbox" id="checkbox3marca"><span class="diseniocheck"></span>
                                         <span>.</span>
                                         </label>
                                     </li>
@@ -123,51 +123,45 @@
                                 <details>
                                     <summary>Size</summary>
                                     <li>
-                                        <label for="checkbox-1" class="checkbox-label">
-                                        <input type="checkbox">
-                                        <span>XS</span>
+                                        <label for="checkbox1size"class="checkbox-label">
+                                        <input class="checkbox" type="checkbox" id="checkbox1size"><span class="diseniocheck"></span>
+                                        <span>XXS</span>
                                         </label>
                                     </li>
                                     <li>
-                                        <label for="checkbox-1" class="checkbox-label">
-                                        <input type="checkbox">
-                                        <span>S</span>
+                                        <label for="checkbox2size"class="checkbox-label">
+                                        <input class="checkbox" type="checkbox" id="checkbox2size">
+                                        <span class="diseniocheck"></span><span>XS</span>
                                         </label>
                                     </li>
                                     <li>
-                                        <label for="checkbox-1" class="checkbox-label">
-                                        <input type="checkbox">
-                                        <span>M</span>
+                                        <label for="checkbox3size"class="checkbox-label">
+                                        <input class="checkbox" type="checkbox" id="checkbox3size">
+                                        <span class="diseniocheck"></span><span>S</span>
                                         </label>
                                     </li>
                                     <li>
-                                        <label for="checkbox-1" class="checkbox-label">
-                                        <input type="checkbox">
-                                        <span>L</span>
+                                        <label for="checkbox4size"class="checkbox-label">
+                                        <input class="checkbox" type="checkbox" id="checkbox4size">
+                                        <span class="diseniocheck"></span><span>M</span>
                                         </label>
                                     </li>
                                     <li>
-                                        <label for="checkbox-1" class="checkbox-label">
-                                        <input type="checkbox">
-                                        <span>XL</span>
+                                        <label for="checkbox5size"class="checkbox-label">
+                                        <input class="checkbox" type="checkbox" id="checkbox5size">
+                                        <span class="diseniocheck"></span><span>L</span>
                                         </label>
                                     </li>
                                     <li>
-                                        <label for="checkbox-1" class="checkbox-label">
-                                        <input type="checkbox">
-                                        <span>XXL</span>
+                                        <label for="checkbox6size"class="checkbox-label">
+                                        <input class="checkbox" type="checkbox" id="checkbox6size">
+                                        <span class="diseniocheck"></span><span>XL</span>
                                         </label>
                                     </li>
                                     <li>
-                                        <label for="checkbox-1" class="checkbox-label">
-                                        <input type="checkbox">
-                                        <span>XXXL</span>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label for="checkbox-1" class="checkbox-label">
-                                        <input type="checkbox">
-                                        <span>XXXXL</span>
+                                        <label for="checkbox7size"class="checkbox-label">
+                                        <input class="checkbox" type="checkbox" id="checkbox7size">
+                                        <span class="diseniocheck"></span><span>XXL</span>
                                         </label>
                                     </li>
                                 </details>
@@ -176,21 +170,21 @@
                                 <details>
                                     <summary>Tipo</summary>
                                     <li>
-                                        <label for="checkbox-1" class="checkbox-label">
-                                        <input type="checkbox">
-                                        <span>.</span>
+                                        <label for="checkbox1tipo"class="checkbox-label">
+                                        <input class="checkbox" type="checkbox" id="checkbox1tipo">
+                                        <span class="diseniocheck"></span><span>Acampanado</span>
                                         </label>
                                     </li>
                                     <li>
-                                        <label for="checkbox-1" class="checkbox-label">
-                                        <input type="checkbox">
-                                        <span>.</span>
+                                        <label for="checkbox2tipo"class="checkbox-label">
+                                        <input class="checkbox" type="checkbox" id="checkbox2tipo">
+                                        <span class="diseniocheck"></span><span>Gabardina</span>
                                         </label>
                                     </li>
                                     <li>
-                                        <label for="checkbox-1" class="checkbox-label">
-                                        <input type="checkbox">
-                                        <span>.</span>
+                                        <label for="checkbox3tipo"class="checkbox-label">
+                                        <input class="checkbox" type="checkbox" id="checkbox3tipo">
+                                        <span class="diseniocheck"></span><span>.</span>
                                         </label>
                                     </li>
                                 </details>
@@ -199,21 +193,22 @@
                                 <details>
                                     <summary>Color</summary>
                                     <li>
-                                        <label for="checkbox-1" class="checkbox-label">
-                                        <input type="checkbox">
-                                        <span>.</span>
+                                        <label for="checkbox1color"class="checkbox-label">
+                                        <input class="checkboxcolor"
+                                        value="naranja" onchange="color('naranja')" type="checkbox" id="checkbox1color">
+                                        <span class="diseniocheck"></span><span>Naranja</span>
                                         </label>
                                     </li>
                                     <li>
-                                        <label for="checkbox-1" class="checkbox-label">
-                                        <input type="checkbox">
-                                        <span>.</span>
+                                        <label for="checkbox2color"class="checkbox-label">
+                                        <input class="checkboxcolor" value="rojo"  onchange="color('rojo')" type="checkbox" id="checkbox2color">
+                                        <span class="diseniocheck"></span><span>Rojo</span>
                                         </label>
                                     </li>
                                     <li>
-                                        <label for="checkbox-1" class="checkbox-label">
-                                        <input type="checkbox">
-                                        <span>.</span>
+                                        <label for="checkbox3color" class="checkbox-label">
+                                        <input value="gris" class="checkboxcolor" onchange="color('gris')" type="checkbox" id="checkbox3color">
+                                        <span class="diseniocheck"></span><span>Gris</span>
                                         </label>
                                     </li>
                                 </details>
@@ -227,17 +222,17 @@
                     </summary>
                     <div class="d-ordenar-por">
                         <ul>
-                            <li><label for="checkbox-2" class="checkbox-label">
-                                <input type="checkbox">
-                                <span>Precio</span>
+                            <li><label for="checkbox1orden" class="checkbox-label">
+                                <input type="checkbox" class="checkbox" id="checkbox1orden">
+                                <span class="diseniocheck"></span><span>Precio</span>
                             </label></li>
-                            <li><label for="checkbox-2" class="checkbox-label">
-                                <input type="checkbox">
-                                <span>Relevancia</span>
+                            <li><label for="checkbox2orden" class="checkbox-label">
+                                <input type="checkbox" class="checkbox" id="checkbox2orden">
+                                <span class="diseniocheck"></span><span>Relevancia</span>
                             </label></li>
-                            <li><label for="checkbox-2" class="checkbox-label">
-                                <input type="checkbox">
-                                <span>Nombre</span>
+                            <li><label for="checkbox3orden" class="checkbox-label">
+                                <input type="checkbox" class="checkbox" id="checkbox3orden">
+                                <span class="diseniocheck"></span><span>Nombre</span>
                             </label></li>
                         </ul>
                     </div>
@@ -246,7 +241,7 @@
             <div class="productos">
                 <h2>Abriguitos</h2>
                 <section class="abriguitos" id="abriguitos">
-                    
+                
 
                 </section>
             </div>

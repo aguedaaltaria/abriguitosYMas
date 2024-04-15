@@ -188,6 +188,54 @@ header label {
     position: absolute;
 } */
 
+.opciones input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox-label .diseniocheck {
+    width: .8rem;
+    height: .8rem;
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    border: #8b88c3 0.2rem solid;
+    border-radius: 50%;
+    transform: translate(-1.5rem, 2px);
+    /* box-shadow: 0 0 1px 1px #bebbf6, 
+                0 0 5px 1px #454361,
+                inset 0 0 .75rem #8b88c3; */
+    background-color: var(--dark-verdito-transparent);
+    cursor: pointer;
+}
+
+.diseniocheck::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    bottom: 2px;
+    width: 5px;
+    height: 13px;
+    border: solid #00ff0a 3px;
+    transform: rotate(45deg);
+    border-left: none;
+    border-top: none;
+    opacity: 0;
+}
+
+.opciones input:checked ~ .diseniocheck::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    bottom: 2px;
+    width: 5px;
+    height: 13px;
+    border: solid #00ff0a 3px;
+    transform: rotate(45deg);
+    border-left: none;
+    border-top: none;
+    opacity: 1;
+}
+
 .abriguitos {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -195,7 +243,7 @@ header label {
     margin-top: 3rem;
 }
 
-.item {
+.elemento {
     height: 22rem;
     border: var(--dark-rosadito) 2px solid;
     padding: 0.75rem;
@@ -206,7 +254,7 @@ header label {
     opacity: 0.7;
 }
 
-.item:hover {
+.elemento:hover {
     box-shadow: 0 0 20px var(--dark-rosadito);
     transform: scale(1.01, 1.01);
     opacity: 1;
@@ -245,7 +293,7 @@ header label {
     border-top-left-radius: 4rem;
 }
 
-.item img {
+.elemento img {
     display: flex;
     width: 11rem;
     height: 12rem;
@@ -280,10 +328,10 @@ header label {
 
 @keyframes animate {
     0% {
-        transform: rotate(-45deg) scale(0.8);
+        transform: rotate(-45deg) scale(0.7);
     }
-    70% {
-        transform: rotate(-45deg) scale(1.2);
+    50% {
+        transform: rotate(-45deg) scale(1.3);
     }
     100% {
         transform: rotate(-45deg) scale(1);
@@ -315,6 +363,18 @@ header label {
     transition: background-color 0.2s;
 }
 
+.heart:hover ~ .label{
+    background-color: var(--dark-rosadito) ;
+}
+
+.heart:hover ~ .label::after{
+    background-color: var(--dark-rosadito) ;
+}
+
+.heart:hover ~ .label::before{
+    background-color: var(--dark-rosadito) ;
+}
+
 .heart:checked ~ .label {
     background-color: red;
     animation: animate 0.5s linear;
@@ -329,7 +389,6 @@ header label {
 }
 
 .heart { 
-    /* opacity: 0; */
     display: none;
 }
 
@@ -347,7 +406,11 @@ header label {
     margin: 1rem 0;
     font-weight: 900;
     transform: translateX(-1rem);
-    /* text-shadow: 0 0 1px black */
+}
+
+.marca {
+    font-size: 5px;
+    color: #f4a9ca67;
 }
 
 .especificaciones {
@@ -358,12 +421,11 @@ header label {
     font-weight: 900;
     color: var(--dark-verdito);
     bottom: 10px;
-    /* transform: translate(0, -0.4rem); */
 }
 
 .especificaciones p {
     display: flex;
-    /* justify-content: center; */
+    justify-content: center;
 }
 
 .especificaciones select {
