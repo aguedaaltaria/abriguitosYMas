@@ -1,6 +1,3 @@
-
-/////////////////////////
-
 const contenedorTargetas = document.getElementById("abriguitos");
 
 function crearTarjetas(productos) {
@@ -37,7 +34,7 @@ function crearTarjetas(productos) {
     <div class="especificaciones">
         <div id="size">
             <p>Size</p>
-            <select name="Size">
+            <select name="Size" id="sizeSelect">
                 <option value="${producto.size[0]}">${producto.size[0]}</option>
                 <option value="${producto.size[1]}">${producto.size[1]}</option>
                 <option value="${producto.size[2]}">${producto.size[2]}</option>
@@ -105,6 +102,38 @@ function color(color) {
     })
 
     if (checkedColors.length == 0) {
+        elementos.forEach(elemento => {
+            elemento.style.display = "block";
+        })
+    }
+}
+
+function tipo(tipo) {
+    let elementos = contenedorTargetas.querySelectorAll(".item");
+    let checkbox = document.getElementsByClassName("checkboxtipo");
+    let arrCheckbox = Array.from(checkbox);
+    let checkedTipos = arrCheckbox.filter((checkedTipo) => {
+        if (checkedTipo.checked) {
+            return true
+        } else {
+            return false
+        }
+    })
+    checkedTipos = checkedTipos.map((valor) => {return valor.value}); 
+
+    elementos.forEach(elemento => {
+        elemento.style.display = "none";
+    })
+
+    elementos.forEach(elemento => {
+        checkedTipos.forEach(checkedTipo => {
+            if(elemento.textContent.toLowerCase().includes(checkedTipo)) {
+                elemento.style.display = "block";
+            }
+        }) 
+    })
+
+    if (checkedTipos.length == 0) {
         elementos.forEach(elemento => {
             elemento.style.display = "block";
         })
