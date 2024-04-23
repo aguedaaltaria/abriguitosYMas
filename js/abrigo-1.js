@@ -9,7 +9,7 @@ function crearTarjetas(productos) {
 <div class="elemento ${producto.color}">     
     <div class="icon-item-corazon">
         <div class="icon-item">
-            <button class="carritoAniadir">
+            <button class="carritoAniadir" onclick="addCar('${producto.nombre}', ${producto.precio})">
                 <span class="material-symbols-outlined shopping-cart-item">
                     add_shopping_cart
                     </span>
@@ -138,4 +138,10 @@ function tipo(tipo) {
             elemento.style.display = "block";
         })
     }
+}
+
+// Carrito ////////////////
+
+function addCar(producto, precio) {
+    console.log(producto, precio);
 }

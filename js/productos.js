@@ -42,5 +42,16 @@ const abrigos = [
         precio: 15.00,
         stock: 5,
         imagen: "../img/abrigo-rojo.jpg"
+    },
+    {
+        id: 5,
+        nombre: "Abrigo acolchado, ligero y resistente al agua con capucha",
+        size: ["XS", "S", "M", "L", "XL", "XXL"],
+        color: "Beige",
+        marca: "Amazon Essentials",
+        tipo: "Pluma",
+        precio: 20.00,
+        stock: 5,
+        imagen: "../img/abrigoacolchado.png"
     }
 ];
