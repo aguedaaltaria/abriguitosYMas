@@ -53,17 +53,22 @@ summary {
 
 .menu {
     position: absolute;
-    transform: translateY(14px);
+    transform: translateY(13px);
     background-color: var(--dark-rosadito);
     line-height: 2;
     padding: 0 2rem;
-    height: 100vh;
+    height: 0;
     left: 0;
     z-index: 1;
+    transition: height 2s ease;
 }
 
 .menu .material-symbols-outlined {
     font-size: 1.2rem;
+}
+
+details[open] .menu {
+    height: 100vh;
 }
 
 .menu p {
@@ -98,6 +103,87 @@ header img {
     border: var(--dark-verdito) 2px solid;
 }
 
+#carrito {
+    border: none;
+    background-color: transparent;
+}
+
+#pago {
+    display: none;
+    position: absolute;
+    background-color: var(--dark-rosadito);
+    opacity: 0.8;
+    padding: 1rem;
+    border-radius: 5px;
+    z-index: 100;
+    font-size: .8rem;
+    transform: translate(-150px);
+    width: 200px;
+    margin-top: 1rem;
+}
+
+#pago span {
+    font-size: .8rem
+}
+
+#pago li{
+    display: flex;
+    justify-content: space-between;
+    padding: 2px;
+}
+
+#total {
+    display: flex;
+    justify-content: flex-end;
+    font-weight: 700;
+    border-top: var(--rosadito) 2px solid;
+    font-size: .9rem;
+}
+
+#btnpago {
+    background-color: var(--dark-rosadito);
+    color: var(--rosadito);
+    border: none;
+    transition: transform 0.2s ease;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    cursor: pointer;
+}
+
+#btnpago:hover {
+    color: #e089af;
+}
+
+#btnpago:active {
+    transform: scale(0.8);
+}
+
+#btnpago span {
+    font-size: 1rem;
+    transform: translateX(-1rem);
+}
+
+#btncerrarpago {
+    display: flex;
+    margin-bottom: -1.8rem;
+    transform: translate(12rem, -1.5rem);
+    color: var(--rosadito);
+    background-color: var(--dark-rosadito);
+    border: none;
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+}
+
+#btncerrarpago:active {
+    transform: translate(12rem, -1.5rem);
+}
+
+#btncerrarpago:hover {
+    color: #e089af;
+}
+
 .head-1 {
     display: flex;
     flex-direction: row;
@@ -117,8 +203,8 @@ header img {
 
 
 .logo img {
-    height: 4rem;
-    width: 4rem;
+    height: 3rem;
+    width: 4.5rem;
     margin-left: 1rem;
 }
 
@@ -151,7 +237,7 @@ header img {
     background-repeat: no-repeat;
     outline: none;
     border: var(--rosadito) 3px solid;
-    width: 15rem;
+    width: 12rem;
 }
 
 #busqueda:placeholder-shown {
@@ -172,6 +258,7 @@ header img {
     padding: 0.5rem;
     height: 1rem;
     transition: color 1s, height 1s, font-size 1s, background-color 1s; 
+    z-index: 50;
 }
 
 .oferta:hover {
@@ -275,28 +362,28 @@ header img {
 .abriguitos {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 2rem;
-    margin-top: 3rem;
+    gap: 1.5rem;
+    margin-top: 2rem;
 }
 
 @media (max-width: 1100px) {
     .abriguitos {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        margin: 3rem 3rem 0;
+        margin: 2rem 3rem 0;
         width: 10rem;
         justify-content: start;
-        gap: 2rem;
+        gap: 1.5rem;
 }}
 
 @media (max-width: 800px) {
     .abriguitos {
         display: grid;
         grid-template-columns: 1fr;
-        margin: 3rem 3rem 0;
+        margin: 2rem 3rem 0;
         width: 10rem;
         justify-content: start;
-        gap: 2rem;
+        gap: 1.5rem;
 }}
 
 .elemento {

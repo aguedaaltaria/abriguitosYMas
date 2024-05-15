@@ -15,13 +15,11 @@
     <header id="header"> 
         <div class="head-1">
             <div class="iconos-head">
-                <details class="detail-container">
-                    <summary>
-                        <span class="material-symbols-outlined">
-                            menu
-                        </span>
-                    </summary>
-                    <div class="menu">
+                <details class="detail-container" id="detail-container">
+                    <summary><span class="material-symbols-outlined">
+                        menu
+                    </span></summary>
+                    <div class="menu" >
                         <h3>Menu</h3>
                         <p>Tu Cuenta</p>
                         <p>Tus Pedidos</p>
@@ -36,7 +34,7 @@
                 </details>
             </div>
             <div class="logo">
-                <a href="./abrigo-1.html"><img src="../img/logo-axolotl.png" alt="logo-axolotl"></a>
+                <a href="./abrigo-1.html"><img src="../img/logo-axolotl1.png" alt="logo-axolotl"></a>
             </div>
         </div>
         <a href="./abrigo-1.html"><p id="nombreNav">Abriguitos & Mas</p></a>
@@ -45,22 +43,40 @@
             <hr>
                 <div class="iconos-head">
                     <span class="material-symbols-outlined">
-                <a href="#">person</a>
+                <a href="./perfil.html">person</a>
                     </span>
                 </div>
-                <div class="iconos-head">
+                <div class="iconos-head"><button id="carrito">
                     <span class="material-symbols-outlined">
                 <a href="./carrito.html">shopping_cart <span id="numCarrito">0</span></a>
-                        </span>
+                        </span></button>
+                        <div id="pago">
+                            <ul id="listaPago">
+                                
+                            </ul>
+                            <p id="total">$0</p>
+                            <div class="btnspago">
+                                <button id="btnpago"><span class="material-symbols-outlined">
+                                    point_of_sale
+                                    </span>Pago</button>
+                                <button onclick="borrarpago()" id="btnpago"><span class="material-symbols-outlined">
+                                    cancel
+                                    </span>Borrar</button>
+                            </div>
+                            <button id="btncerrarpago">x</button>
+                        </div>
                 </div>
         </div>
     </header>
-    <div class="oferta">
+    <div class="oferta" id="oferta">
         <p><span class="material-symbols-outlined">
             sell
             </span> Oferta del 15% para los primeros clientes</p>
     </div>
-    <div class="contenedor">
+    <div class="contenedor" id="contenedor">
+        <p id="bienvenido">
+
+        </p>
         <div class="d-contenedor">
             <div class="opciones">
                 <h2>Opciones</h2>
