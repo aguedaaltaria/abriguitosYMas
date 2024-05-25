@@ -36,9 +36,22 @@ body {
     color: black;
     display: flex;
     align-items: center;
-    width: 90%;
-    padding: 15px 20px 5px;
-    font-size: 1.08rem;
+    width: 17rem;
+    padding: 15px 20px 15px;
+    font-size: 1rem;
+    overflow: hidden;
+    /* white-space: nowrap; */
+    animation: type 2s steps(8, end),
+            undertale 2s steps(3, end);
+    height: 4rem;
+}
+
+@keyframes type {
+    from {width: 0;}
+}
+
+@keyframes undertale {
+    from {height: 0.5rem;}
 }
 
 .imagenPerfil p {
@@ -52,7 +65,7 @@ body {
 }
 
 .textoImgPerfil {
-    margin: 10px 15px 40px;
+    margin: 5px 15px 40px;
     transform: translate(2rem, 22rem);
     background-color: white;
     border-radius: 10px;

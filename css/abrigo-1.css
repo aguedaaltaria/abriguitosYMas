@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Protest+Riot&family=Ubuntu:wght@300;400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Charm&family=Cutive+Mono&family=Montserrat&family=Protest+Riot&family=Ubuntu:wght@300;400;500&display=swap');
+
+
 :root {
     --rosadito: #F4A9CA;
     --dark-rosadito: #75485B;
@@ -7,6 +9,7 @@
     --dark-verdito: #7CA07D;
     --dark-verdito-transparent: #7ca07d7e;
     --grisito: #B59CA7;
+    --verdito-hover: #79dd7c;
 }
 
 * {
@@ -311,7 +314,7 @@ header img {
 }
 
 #busqueda:hover {
-    background-color: #7fec83;
+    background-color: var(--verdito-hover);
     border: var(--rosadito) 5px solid;
 }
 
