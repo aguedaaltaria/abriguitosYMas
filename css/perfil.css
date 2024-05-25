@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Protest+Riot&family=Ubuntu:wght@300;400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Charm&family=Cutive+Mono&family=Montserrat&family=Protest+Riot&family=Ubuntu:wght@300;400;500&display=swap');
+
 :root {
     --rosadito: #F4A9CA;
     --dark-rosadito: #75485B;
@@ -307,5 +308,116 @@ body {
     .imagenPerfil {
         transform: translate(-161px, 0px)
         scale(0.809);
+    }
+}
+
+@media (max-width: 650px) {
+    header {
+        height: 5rem;
+    }
+    .formularioLogin {
+        transform: translate(280px, -535px)
+        scale(0.80);
+    }
+    .formularioPerfil {
+        transform: translate(280px, -535px)
+        scale(0.80);
+    }
+    .formularioRegister{
+        transform: translate(280px, -535px)
+        scale(0.80);
+    }
+    .imagenPerfil {
+        transform: translate(-161px, 0px)
+        scale(0.809);
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        height: 5rem;
+    }
+    .formularioLogin {
+        transform: translate(250px, -535px)
+        scale(0.80);
+    }
+    .formularioPerfil {
+        transform: translate(250px, -535px)
+        scale(0.80);
+    }
+    .formularioRegister{
+        transform: translate(250px, -535px)
+        scale(0.80);
+    }
+    .imagenPerfil {
+        transform: translate(-161px, 0px)
+        scale(0.809);
+    }
+}
+
+@media (max-width: 550px) {
+    header {
+        height: 5rem;
+    }
+    .formularioLogin {
+        transform: translate(205px, -535px)
+        scale(0.70);
+    }
+    .formularioPerfil {
+        transform: translate(205px, -535px)
+        scale(0.70);
+    }
+    .formularioRegister{
+        transform: translate(205px, -535px)
+        scale(0.70);
+    }
+    .imagenPerfil {
+        transform: translate(-150px, 0px)
+        scale(0.705);
+    }
+}
+
+
+@media (max-width: 525px) {
+    header {
+        height: 5rem;
+    }
+    .formularioLogin {
+        transform: translate(205px, -535px)
+        scale(0.70);
+    }
+    .formularioPerfil {
+        transform: translate(205px, -535px)
+        scale(0.70);
+    }
+    .formularioRegister{
+        transform: translate(205px, -535px)
+        scale(0.70);
+    }
+    .imagenPerfil {
+        transform: translate(-140px, 0px)
+        scale(0.705);
+    }
+}
+
+@media (max-width: 500px) {
+    header {
+        height: 5rem;
+    }
+    .formularioLogin {
+        transform: translate(170px, -535px)
+        scale(0.70);
+    }
+    .formularioPerfil {
+        transform: translate(170px, -535px)
+        scale(0.70);
+    }
+    .formularioRegister{
+        transform: translate(170px, -535px)
+        scale(0.70);
+    }
+    .imagenPerfil {
+        transform: translate(-130px, 0px)
+        scale(0.705);
     }
 }

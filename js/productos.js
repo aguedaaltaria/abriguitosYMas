@@ -12,17 +12,6 @@ const abrigos = [
     },
     {
         id: 2,
-        nombre: "Abrigo gris grisito",
-        size: ["XXS", "XS", "S", "M", "L", "XL", "XXL"],
-        color: "Gris",
-        marca: "glamour",
-        tipo: "Acampanado",
-        precio: 30.00,
-        stock: 5,
-        imagen: "../img/abrigo-gris.jpg"
-    },
-    {
-        id: 3,
         nombre: "Abrigo Ejemplo",
         size: ["XXS", "XS", "S", "M", "L", "XL", "XXL"],
         color: "Naranja",
@@ -33,7 +22,7 @@ const abrigos = [
         imagen: "../img/abrigo-ej.jpg"
     },
     {
-        id: 4,
+        id: 3,
         nombre: "Abrigo rojo rojito",
         size: ["XXS", "XS", "S", "M", "L", "XL", "XXL"],
         color: "Rojo",
@@ -44,7 +33,7 @@ const abrigos = [
         imagen: "../img/abrigo-rojo.jpg"
     },
     {
-        id: 5,
+        id: 4,
         nombre: "Abrigo acolchado, ligero y resistente al agua con capucha",
         size: ["XS", "S", "M", "L", "XL", "XXL"],
         color: "Beige",
