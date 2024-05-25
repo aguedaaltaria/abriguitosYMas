@@ -6,12 +6,17 @@
     --dark-rosadito: #75485B;
     --verdito: #A9F5AC;
     --dark-verdito: #7CA07D;
+    --dark-dark-verdito: #4b794c;
     --dark-verdito-transparent: #7ca07d7e;
+    --rosadito-transparent: #dbc0ccef;
+    --moradito: #a07ca0;
     --grisito: #B59CA7;
+    --verdito-hover: #50f555;
+    --rosadito-hover: #df8aaf;
 }
 
 body {
-    background-color: #4b794c;
+    background-color: var(--dark-dark-verdito);
 }
 
 .contenedorPerfil {
@@ -93,14 +98,14 @@ body {
 
 .formularioPerfil h1 {
     font-family: 'Protest Riot', sans-serif;
-    color: #75485B;
+    color: var(--dark-rosadito);
     display: flex;
     justify-content: center;
 }
 
 .formularioPerfil h2 {
     font-family: 'Protest Riot', sans-serif;
-    color: #75485B;
+    color: var(--dark-rosadito);
     display: flex;
     justify-content: center;
     padding-top: 40px;
@@ -115,7 +120,7 @@ body {
 
 .formularioPerfil h2 {
     font-family: 'Protest Riot', sans-serif;
-    color: #75485B;
+    color: var(--dark-rosadito);
     display: flex;
     justify-content: center;
     padding-top: 40px;
@@ -123,7 +128,7 @@ body {
 
 .formularioPerfil p {
     font-family: sans-serif;
-    color: #75485B;
+    color: var(--dark-rosadito);
     display: flex;
     justify-content: center;
     padding-top: 20px;
@@ -131,7 +136,7 @@ body {
 
 .botonesPerfil {
     font-family: 'Protest Riot', sans-serif;
-    color: #75485B;
+    color: var(--dark-rosadito);
     display: flex;
     justify-content: space-around;
     padding-top: 20px;
@@ -142,7 +147,7 @@ body {
 .botonesPerfil button {
     width: 6rem;
     font-family: 'Protest Riot', sans-serif;
-    background-color: #316431;
+    background-color: var(--dark-dark-verdito);
     border-radius: 50px;
     display: flex;
     justify-content: space-around;
@@ -153,7 +158,7 @@ body {
 }
 
 .formularioLogin {
-    background-color: rgb(238, 238, 238);
+    background-color: white;
     width: 400px;
     transform: translate(682px, -535px);
     width: 400px;
@@ -165,7 +170,7 @@ body {
 
 .formularioLogin h1 {
     font-family: 'Protest Riot', sans-serif;
-    color: #75485B;
+    color: var(--dark-rosadito);
     display: flex;
     justify-content: center;
 }
@@ -178,8 +183,7 @@ body {
 }
 
 .formularioLogin label {
-
-    color: gray;
+    color: var(--grisito);
     border: none;
     background-color: transparent;
     width: 80%;
@@ -187,26 +191,31 @@ body {
 }
 
 .formularioLogin input {
-    color: gray;
+    color: var(--grisito);
     border: none;
     background-color: transparent;
     width: 80%;
     margin: 0 10%;
-    border-bottom: 1px gray solid ;
+    border-bottom: 1px var(--grisito) solid ;
     padding: 5px;
+    outline: none;
+}
+
+.formularioLogin input:focus {
+    background-color: rgb(238, 238, 238);
 }
 
 .formularioLogin p {
     text-align: end;
     font-size: 0.8rem;
-    color: rgb(170, 170, 170);
+    color: var(--dark-verdito-transparent);
     padding: 5px 25px;
 }
 
 .botonesLogin button {
     width: 70%;
     font-family: 'Protest Riot', sans-serif;
-    background-color: #316431;
+    background-color: var(--dark-dark-verdito);
     border-radius: 50px;
     display: flex;
     justify-content: center;
@@ -219,7 +228,7 @@ body {
 }
 
 .formularioRegister {
-    background-color: rgb(238, 238, 238);
+    background-color: white;
     width: 400px;
     transform: translate(682px, -535px);
     width: 400px;
@@ -232,7 +241,7 @@ body {
 
 .formularioRegister h1 {
     font-family: 'Protest Riot', sans-serif;
-    color: #75485B;
+    color: var(--dark-rosadito);
     display: flex;
     justify-content: center;
 }
@@ -246,7 +255,7 @@ body {
 
 .formularioRegister label {
 
-    color: rgb(179, 179, 179);
+    color: var(--grisito);
     border: none;
     background-color: transparent;
     width: 70%;
@@ -259,14 +268,19 @@ body {
     background-color: transparent;
     width: 75%;
     margin: 0 10%;
-    border-bottom: 1px gray solid ;
+    border-bottom: 1px var(--grisito) solid ;
     padding: 5px;
+    outline: none;
+}
+
+.formularioRegister input:focus {
+    background-color: rgb(238, 238, 238);
 }
 
 .botonesRegister button {
     width: 70%;
     font-family: 'Protest Riot', sans-serif;
-    background-color: #316431;
+    background-color: var(--dark-dark-verdito);
     border-radius: 50px;
     display: flex;
     justify-content: center;
