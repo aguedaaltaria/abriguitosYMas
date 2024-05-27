@@ -35,12 +35,13 @@ header {
 }
 
 header, .oferta {
-    position: sticky;
+    position: fixed;
     height: 4rem;
     z-index: 100;
 } 
 
 .contenedor {
+    top: 100px;
     position: absolute;
     z-index: 50;
 }
@@ -108,21 +109,49 @@ header img {
     .head-1 hr {
         display: none;
     }
-    .iconos-head.person {
-        border-top: var(--rosadito) 2px solid;
-        position: absolute;
+    .iconosSti {
+        position: fixed;
+        bottom: 0;
         right: 0;
-        transform: translateY(63px);
-        padding: .5rem;
-        background-color: var(--dark-rosadito);
+        align-items: flex-end;
+        justify-content: flex-end;
+        transform: scale(0.9);
+    }
+    .iconos-head.person a {
+        color: var(--dark-rosadito);
+    }
+    .iconos-head.cart a {
+        color: var(--dark-rosadito);
+    }
+    .iconos-head.person a:hover {
+        color: var(--rosadito);
+    }
+    .iconos-head.cart a:hover {
+        color: var(--rosadito);
+    }
+    .iconos-head.person {
+        box-shadow: 5px 5px 10px var(--dark-verdito-transparent);
+        position: absolute;
+        right: .75rem;
+        bottom: 3rem;
+        padding: .35rem;
+        padding-left: 0;
+        padding-right: .75rem;
+        background-color: var(--dark-verdito-transparent);
+        border-top-right-radius: 50%;
+        border-top-left-radius: 50%;
     }
     .iconos-head.cart{
+        box-shadow: 5px 5px 10px var(--dark-verdito-transparent);
         position: absolute;
-        right: 0;
-        transform: translateY(6.5rem);
-        padding: .5rem;
-        background-color: var(--dark-rosadito);
-        border-bottom-left-radius: 15px;
+        right: .75rem;
+        bottom: 0;
+        padding: .35rem;
+        padding-left: 0;
+        padding-right: .75rem;
+        background-color: var(--dark-verdito-transparent);
+        border-bottom-right-radius: 50%;
+        border-bottom-left-radius: 50%;
     }
 }
 
@@ -228,25 +257,30 @@ header img {
     color: var(--grisito);
 }
 
+.iconosSti {
+    display:flex
+}
+
 .cerrar{
     display: none;
 }
 
 @media (max-width: 650px) {
     #pago {
-        position: absolute;
-        right: 5px;
-        margin-top: 1rem;
-        width: 60px;
+        position: fixed;
+        right: 4rem;
+        bottom: 1rem;
+        width: 70px;
     }
     #btncerrarpago {
         margin-top: -2px;
-        right: 57px;
+        right: 66px;
     }
     .cerrar{
         display: block;
         position: absolute;
         padding-left: 5px;
+        color:var(--rosadito)
     }
 }
 
@@ -483,8 +517,8 @@ header img {
     box-shadow: 0 0 2px var(--dark-rosadito);
     background-color: var(--rosadito-transparent);
     border-radius: 1rem;
-    transition: all 50ms, opacity 50ms;
-    
+    opacity: 0.9;
+    transition: all 200ms, opacity 10ms;
 }
 
 .elemento:hover {
@@ -521,7 +555,6 @@ header img {
     height: 12rem;
     width: 10rem;
     padding: 0 2rem;
-    /* overflow: hidden; */
     border-bottom-right-radius: 5rem;
     border-top-left-radius: 4rem;
 }

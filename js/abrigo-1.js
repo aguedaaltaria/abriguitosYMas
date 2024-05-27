@@ -160,6 +160,12 @@ botonCerrar.addEventListener('click', function() {
     cuadrodepago.style.display = 'none';
 });
 
+carrito.addEventListener('mouseout', function() {
+    setTimeout(() => {
+        cuadrodepago.style.display = 'none';
+    }, 7000);
+});
+
 function addCar(producto, precio) {
     listPago.innerHTML += `
     <li class="productoPago"><p>${producto}</p><span class= "precioPago">$${precio}</span></li>

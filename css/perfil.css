@@ -94,6 +94,7 @@ body {
     flex-direction: column;
     justify-content: center;
     background-color: white;
+    position: absolute;
 }
 
 .formularioPerfil h1 {
@@ -166,6 +167,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: absolute;
 }
 
 .formularioLogin h1 {
@@ -237,6 +239,7 @@ body {
     flex-direction: column;
     justify-content: center;
     margin: 0 0 -150000px;
+    position: absolute;
 }
 
 .formularioRegister h1 {
