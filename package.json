@@ -1,0 +1,16 @@
+{
+  "name": "abriguitosymas",
+  "version": "1.0.0",
+  "description": "This is an online coat store practice to practice the use of json, html, js and css together, to incorporate the knowledge that I have been practicing until now (July 2024)",
+  "main": "app.js",
+  "scripts": {
+    "start": "node --watch app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2"
+  }
+}

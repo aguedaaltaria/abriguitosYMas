@@ -1,0 +1,79 @@
+{
+    "abrigos": [
+        {
+            "id": 1,
+            "nombre": "Abrigo gris grisito",
+            "size": [
+                "XXS",
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL"
+            ],
+            "color": "Gris",
+            "marca": "glamour",
+            "tipo": "Acampanado",
+            "precio": 30,
+            "stock": 5,
+            "imagen": "../img/abrigo-gris.jpg"
+        },
+        {
+            "id": 2,
+            "nombre": "Abrigo Ejemplo",
+            "size": [
+                "XXS",
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL"
+            ],
+            "color": "Naranja",
+            "marca": "glamour",
+            "tipo": "Gabardina",
+            "precio": 25,
+            "stock": 5,
+            "imagen": "../img/abrigo-ej.jpg"
+        },
+        {
+            "id": 3,
+            "nombre": "Abrigo rojo rojito",
+            "size": [
+                "XXS",
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL"
+            ],
+            "color": "Rojo",
+            "marca": "glamour",
+            "tipo": "Gabardina",
+            "precio": 15,
+            "stock": 5,
+            "imagen": "../img/abrigo-rojo.jpg"
+        },
+        {
+            "id": 4,
+            "nombre": "Abrigo acolchado, ligero y resistente al agua con capucha",
+            "size": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL"
+            ],
+            "color": "Beige",
+            "marca": "Amazon Essentials",
+            "tipo": "Pluma",
+            "precio": 20,
+            "stock": 5,
+            "imagen": "../img/abrigoacolchado.png"
+        }
+    ]
+}
