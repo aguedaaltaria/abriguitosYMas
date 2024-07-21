@@ -1,5 +1,15 @@
 const contenedorTargetas = document.getElementById("abriguitos");
 
+async function obtenerAbrigos() {
+    try {
+        const response = await fetch('/abrigos');
+        const productos = await response.json(); 
+        crearTarjetas(productos);
+    } catch (error) {
+        console.error(`Error al cargar los abrigos:, ${error}`);
+    }
+}
+
 function crearTarjetas(productos) {
     productos.forEach((producto) => {
         const nuevoAbrigo = document.createElement("div");
@@ -59,15 +69,17 @@ function crearTarjetas(productos) {
     </div>
 </div>
 
-        `
+            `;
         contenedorTargetas.appendChild(nuevoAbrigo);
     });
 }
 
 if (contenedorTargetas !== null) {
-    crearTarjetas(abrigos);
+    obtenerAbrigos()
 }
 
+
+// Filtros ////////////////////////////////
 
 function hola() {
     let checkbox = document.getElementById("checkboxTodo");
@@ -143,6 +155,7 @@ function tipo(tipo) {
     }
 }
 
+
 // Carrito ////////////////
 
 let carrito = document.getElementById('carrito');
@@ -196,6 +209,7 @@ function actualizar() {
     total.innerHTML = `$${precioReduce}`;
 }
 
+
 // Menu ////////////
 
 let menu = document.getElementById('menu');
@@ -226,6 +240,7 @@ function cambioOpacity() {
     }
 }
 
+
 // Mi Perfil //////////////////////////////////
 
 // register
@@ -238,13 +253,43 @@ let usuarios = [];
 
 class Usuario {
     constructor(nombre, correo, contrasena, direccion) {
-        this._nombre = nombre;
-        this._correo = correo;
-        this._contrasena = contrasena;
-        this._direccion = direccion;
-        this._historialPedidos = [];
+        this.id = generarID(nombre);
+        this.nombre = nombre;
+        this.correo = correo;
+        this.contrasena = contrasena;
+        this.direccion = direccion;
+        this.historialPedidos = [];
+        this.favoritos = [];
         usuarios.push(this);
     }
+}
+
+function generarID(nombre) {
+    let numeros = "0123456789";
+
+    let partes = nombre.split(' ');
+    if (partes.length !== 2) {
+        alert ("Error, debe escribir su primer nombre y su primer apellido");
+    }
+
+    let nombreM = partes[0].toUpperCase();
+    let apellidoM = partes[1].toUpperCase();
+
+    let primeraLetraNombre = nombreM.charAt(0);
+    let primeraLetraApellido = apellidoM.charAt(0);
+
+    let letras = primeraLetraNombre + primeraLetraApellido;
+
+    let id = "";
+    for (let i = 0; i < 1; i++) {
+        id += letras
+    }
+
+    for (let i = 0; i < 4; i++) {
+      id += numeros.charAt(Math.floor(Math.random() * numeros.length));
+    }
+
+    return id; 
 }
 
 function crearUsuario() {
@@ -253,33 +298,165 @@ function crearUsuario() {
     let contrasena = ContrasenaRegister.value;
     let direccion = direccionRegister.value;
     let newUsuario = new Usuario(nombre, correo, contrasena, direccion);
-    window.location.href = "./abrigo-1.html"
+
+    fetch('/usuarios', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newUsuario) // Send the user data as JSON
+    })
+        .then(response => response.json())
+        .then(data => {
+            alert (`Bienvenido a Abriguitos & Mas ${data.nombre}, Tu nuevo ID es ${data.id}`);
+            window.location.href = "/";
+        })
+        .catch(error => {
+            alert ('Error al crear usuario:', error);
+        });
 }
 
-let clientePrueba = new Usuario("Juan Perez", "jp@gmail.com", "1234", "calle 1");
 
 //login
+let formulariologin = document.getElementById('formulariologin');
 let nombreLogin = document.getElementById('nombreLogin');
 let contrasenaLogin = document.getElementById('contrasenaLogin');
+let idLogin = document.getElementById('idLogin');
 
-function btnLogin() {
+formulariologin.addEventListener('submit', event => {
+    event.preventDefault();
+
+    let id = idLogin.value;
     let nombre = nombreLogin.value;
     let contrasena = contrasenaLogin.value;
     let nombreMiniscula = nombre.toLowerCase();
+    let usuarioEncontrado = null;
 
-    for (let usuario of usuarios) {
-        let nombreUsuario = usuario._nombre.toLowerCase();
+    fetch(`/usuarios/${id}`)
+    .then(response => response.json())
+    .then(usuario => {
+        let nombreUsuario = usuario.nombre.toLowerCase();
 
         if (nombreUsuario == nombreMiniscula) {
-            if (usuario._contrasena == contrasena) {
-                alert (`Bienvenido ${usuario._nombre}`);
-                window.location.href = "./abrigo-1.html"
-            } else {
-                alert ("Contrasena incorrecta");
-                break;
+            if (usuario.contrasena == contrasena) {
+                usuarioEncontrado = usuario;
             }
-        } else {
-            alert ("No hay usuario con ese nombre");
         }
+
+        if (usuarioEncontrado) {
+            alert (`Bienvenido ${usuarioEncontrado.nombre}`);
+            window.location.href = "/";
+        } else {
+            alert ("No hay usuario con ese nombre o contraseña incorrecta");
+        }
+    })
+    .catch(error => {
+        console.error('Error al cargar el archivo JSON:', error);
+    })
+})
+
+// Mi cuenta /////////////////////
+
+// Informacion
+const formularioAcceder = document.getElementById("formularioGET");
+const info = document.getElementById("info");
+const cuadroAcceder = document.getElementById("cuadroGET")
+
+formularioAcceder.addEventListener('submit', event => {
+    event.preventDefault();
+
+    const idGET = (document.getElementById("idGET")).value;
+
+    fetch(`/usuarios/${idGET}`)
+    .then(response => response.json())
+    .then((data) => {
+        if (data) {
+            cuadroAcceder.style.left = "-100vw";
+            info.innerHTML = `
+            <table>
+                    <tr>
+                        <td>ID:</td>
+                        <td>${data.id}</td>
+                    </tr>
+                    <tr>
+                        <td>Nombre:</td>
+                        <td>${data.nombre}</td>
+                    </tr>
+                    <tr>
+                        <td>Correo electronico:</td>
+                        <td>${data.correo}</td>
+                    </tr>
+                    <tr>
+                        <td>Direccion:</td>
+                        <td>${data.direccion}</td>
+                    </tr>
+                    <tr>
+                        <td>Contrasena:</td>
+                        <td>${data.contrasena}</td>
+                    </tr>
+                    <tr>
+                        <td>Historial de pedidos:</td>
+                        <td>Ha hecho ${data.historialPedidos.length} pedidos</td>
+                    </tr>
+                </table>
+            `;
+        } else {
+            console.error('Error: No se encontraron datos de ese usuario.');
+        }
+    })
+    .catch(error => {
+        console.error('Error en el fetch:', error);
+    });
+})
+
+// Eliminar cuenta 
+const btnEliminarCuenta = document.getElementById("eliminarCuenta");
+const cuadroEliminarCuenta = document.getElementById("cuadroDELETE");
+const ocultarCuadroEliminarCuenta = document.getElementById("ocultarEliminarcuenta");
+const formularioEliminarCuenta = document.getElementById("formularioDELETE");
+
+btnEliminarCuenta.addEventListener('click', () => {
+    cuadroEliminarCuenta.style.left = 0;
+})
+
+ocultarCuadroEliminarCuenta.addEventListener('click', () => {
+    cuadroEliminarCuenta.style.left = "-100vw";
+})
+
+formularioEliminarCuenta.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    let respuesta = confirm("¿Deseas Eliminar tu cuenta de forma definitiva? No hay vuelta atras");
+
+    if (respuesta == true) {
+        const idDELETE = document.getElementById("idDELETE").value;
+
+        if (idDELETE && idDELETE !== "") {
+            fetch(`/usuarios/${idDELETE}`, {
+                method: 'DELETE',
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert("Cuenta eliminada exitosamente");
+                    window.location.href = "/";
+                } else {
+                    alert(`Error al eliminar cuenta: ${response.status}`);
+                }
+            })
+            .catch(error => {
+                if (error instanceof NetworkError) {
+                    alert("Error de red: Intenta nuevamente más tarde");
+                } else if (error instanceof SyntaxError) {
+                    alert("Error de sintaxis en la respuesta del servidor");
+                } else {
+                    console.error(error);
+                    alert("Error al eliminar cuenta. Contacta al soporte técnico");
+                }
+            })
+        } else {
+            alert("Error: ID de usuario inválido");
+        }
+    } else {
+        cuadroEliminarCuenta.style.left = "-100vw";
     }
-}
+})

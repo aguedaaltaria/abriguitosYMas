@@ -1,7 +1,7 @@
 {
     "abrigos": [
         {
-            "id": 1,
+            "id": "AB0905",
             "nombre": "Abrigo gris grisito",
             "size": [
                 "XXS",
@@ -20,7 +20,7 @@
             "imagen": "../img/abrigo-gris.jpg"
         },
         {
-            "id": 2,
+            "id": "AB5723",
             "nombre": "Abrigo Ejemplo",
             "size": [
                 "XXS",
@@ -39,7 +39,7 @@
             "imagen": "../img/abrigo-ej.jpg"
         },
         {
-            "id": 3,
+            "id": "AB4803",
             "nombre": "Abrigo rojo rojito",
             "size": [
                 "XXS",
@@ -58,7 +58,7 @@
             "imagen": "../img/abrigo-rojo.jpg"
         },
         {
-            "id": 4,
+            "id": "AB1005",
             "nombre": "Abrigo acolchado, ligero y resistente al agua con capucha",
             "size": [
                 "XS",

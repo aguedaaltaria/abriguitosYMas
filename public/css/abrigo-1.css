@@ -32,14 +32,18 @@ header {
     padding: 0.2rem 2.5rem 0.2rem 1rem;
     background-color: var(--dark-rosadito);
     color: var(--rosadito);
+    width: 97vw;
 }
 
 header, .oferta {
     position: fixed;
     height: 4rem;
     z-index: 100;
-    width: 100vw;
 } 
+
+.oferta {
+    width: 100vw;
+}
 
 .oferta {
     margin-top: 4.1rem;

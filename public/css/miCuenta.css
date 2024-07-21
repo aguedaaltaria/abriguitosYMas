@@ -1,0 +1,182 @@
+:root {
+    --rosadito: #F4A9CA;
+    --dark-rosadito: #75485B;
+    --verdito: #A9F5AC;
+    --dark-verdito: #7CA07D;
+    --dark-verdito-transparent: #7ca07d7e;
+    --rosadito-transparent: #dbc0ccef;
+    --moradito: #a07ca0;
+    --grisito: #B59CA7;
+    --verdito-hover: #50f555;
+    --rosadito-hover: #df8aaf;
+}
+
+header {
+    position: fixed;
+    top: 0;
+}
+
+.contenedorMiCuenta {
+    position: relative;
+}
+
+.contenidoMiCuenta {
+    background-color: rgba(255, 255, 255, 0.7);
+    width: auto;
+    height: auto;
+    margin: 8rem 10rem 4rem;
+    border-radius: 5px;
+    padding: 3rem 5rem 5rem;
+}
+
+/* #person {
+    margin-top: 10px;
+} */
+
+/* Eliminar cuenta */
+ #cuadroDELETE, #cuadroGET {
+    z-index: 2;
+    width: 100vw;
+    height: 120%;
+    background-color: var(--dark-verdito);
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 4rem;
+    left: -100vw;
+    transition: left 0.5s ease;
+}
+
+#cuadroGET {
+    left: 0;
+}
+
+#formularioDELETE, #formularioGET {
+    background-color: white;
+    padding: 3rem;
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    transform: translateY(-5rem);
+}
+
+.contendorMiCuenta input {
+    color: var(--grisito);
+    border: none;
+    background-color: transparent;
+    width: 40%;
+    margin: 0;
+    border-bottom: 1px var(--grisito) solid ;
+    padding: 5px;
+    outline: none;
+}
+
+.contendorMiCuenta input:placeholder-shown {
+    color: var(--grisito);
+    font-weight: 600;
+    font-size: 1rem;
+    background-image: url(./img/fingerprint_16dp_FFDB58_FILL0_wght400_GRAD0_opsz20.svg);
+    background-position: left 15px bottom 10px;
+    background-repeat: no-repeat;
+    padding-left: 1.5rem;
+}
+
+
+.contendorMiCuenta button:active {
+    transform: scale(0.9);
+}
+
+.contendorMiCuenta button {
+    width: 10rem;
+    font-family: 'Protest Riot', sans-serif;
+    background-color: var(--dark-verdito);
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+#btnMiCuenta {
+    display: flex;
+    flex-direction: row;
+}
+
+.contendorMiCuenta h1, h2 {
+    font-family: 'Protest Riot', sans-serif;
+    color: var(--dark-rosadito);
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.eliminar hr, #cuadroGET hr {
+    border: 1px dashed var(--dark-rosadito);
+    display: flex;
+    width: 70%;
+    margin: 10px 10%;   
+}
+
+#eliminarCuenta {
+    background-color: red;
+}
+
+#btnDELETE {
+    background-color: red;
+}
+
+#ocultarEliminarcuenta {
+    background-color: transparent;
+    /* margin-left: -7rem; */
+    /* margin-top: -17rem; */
+    fill: var(--dark-rosadito);
+    border: none;
+    transform: translate(-7rem, -14rem);
+}
+
+#btncerrarpago {
+    right: 1rem;
+}
+
+#pago {
+    transform: translateX(-1rem);
+}
+
+.btnspago {
+    transform: translateX(1rem);
+}
+
+.contendorMiCuenta table {
+    width: 70%;
+    border: none;
+    margin: 3rem auto;
+    font-size: 1.1rem;
+}
+
+.contendorMiCuenta tr td {
+    color: var(--grisito);
+}
+
+.contendorMiCuenta tr td:first-child {
+    font-weight: bold;
+    color: black;
+}
+
+.contendorMiCuenta td {
+    padding: .5rem;
+}
+
+#btnMiCuenta {
+    margin: 1rem 10rem;
+    display: flex;
+    justify-content: space-around;
+}
