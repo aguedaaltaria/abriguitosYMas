@@ -101,5 +101,43 @@
     </div>
     <!-- <script src="../js/perfil.js"></script> -->
     <script src="../js/abrigo-1.js" defer></script>
+    <script>
+        const formulariologin = document.getElementById('formulariologin');
+        const nombreLogin = document.getElementById('nombreLogin');
+        const contrasenaLogin = document.getElementById('contrasenaLogin');
+        const idLogin = document.getElementById('idLogin');
+
+        formulariologin.addEventListener('submit', event => {
+            event.preventDefault();
+
+            let id = idLogin.value;
+            let nombre = nombreLogin.value;
+            let contrasena = contrasenaLogin.value;
+            let nombreMiniscula = nombre.toLowerCase();
+            let usuarioEncontrado = null;
+
+            fetch(`/usuarios/${id}`)
+            .then(response => response.json())
+            .then(usuario => {
+                let nombreUsuario = usuario.nombre.toLowerCase();
+
+                if (nombreUsuario == nombreMiniscula) {
+                    if (usuario.contrasena == contrasena) {
+                        usuarioEncontrado = usuario;
+                    }
+                }
+
+                if (usuarioEncontrado) {
+                    alert (`Bienvenido ${usuarioEncontrado.nombre}`);
+                    window.location.href = "/";
+                } else {
+                    alert ("No hay usuario con ese nombre o contraseña incorrecta");
+                }
+            })
+            .catch(error => {
+                console.error('Error al cargar el archivo JSON:', error);
+            })
+        })
+    </script>
 </body>
 </html>

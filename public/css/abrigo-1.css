@@ -335,6 +335,13 @@ header img {
         margin: 1rem 0 ;
 }
 
+#formularioBusqueda {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+}
+
 #busqueda {
     background-color: var(--verdito);
     background-position-y: center;
@@ -365,6 +372,17 @@ header img {
 #busqueda:hover {
     background-color: var(--verdito-hover);
     border: var(--rosadito) 5px solid;
+}
+
+#btnBusqueda {
+    border: none;
+    background-color: transparent;
+    fill: var(--rosadito);
+    width: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
 }
 
 .oferta {
@@ -715,4 +733,11 @@ header img {
     justify-content: center;
     color: black;
     font-size: 0.7rem;
+}
+button:active {
+    transform: scale(0.9);
+}
+
+button {
+    cursor: pointer;
 }

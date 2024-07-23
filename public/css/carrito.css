@@ -1,0 +1,126 @@
+
+
+:root {
+    --rosadito: #F4A9CA;
+    --dark-rosadito: #75485b;
+    --verdito: #A9F5AC;
+    --dark-verdito: #7CA07D;
+    --dark-verdito-transparent: #7ca07d7e;
+    --rosadito-transparent: #dbc0ccef;
+    --moradito: #a07ca0;
+    --grisito: #B59CA7;
+    --verdito-hover: #50f555;
+    --rosadito-hover: #df8aaf;
+}
+
+header {
+    position: fixed;
+    top: 0;
+}
+
+.contenedorCarrito {
+    position: relative;
+}
+
+.cuadroCarrito {
+    background-color: rgba(255, 255, 255, 0.5);
+    width: auto;
+    height: auto;
+    margin: 8rem 10rem 4rem;
+    border-radius: 5px;
+    padding: 3rem 5rem 5rem;
+    display: flex;
+    justify-content: center;
+}
+
+#productosCarrito {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    gap: 1rem;
+}
+
+.productoCarrito {
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: row;
+    width: 40rem;
+    height: 7.5rem;
+    justify-content: space-around;
+    align-items: center;
+    padding: .5rem;
+    border-radius: 1rem;
+}
+
+img {
+    height: 7rem;
+    border-radius: 5px;
+}
+
+.nombreYCantidades {
+    font-size: 1rem;
+}
+
+.nombreYCantidades h3 {
+    font-size: 1.2rem;
+}
+
+.nombreYCantidades p:nth-child(3) {
+    color: var(--grisito);
+    font-size: .9rem;
+}
+
+button:active {
+    transform: scale(0.75);
+}
+
+.contenedorCarrito button {
+    border: none;
+    background-color: transparent;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.botonesYNum {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.trash {
+    display: flex;
+    justify-content: flex-end;
+    transform: translate(6rem, -2rem);
+}
+
+.trash:active {
+    display: flex;
+    justify-content: flex-end;
+    transform: translate(6rem, -2rem) scale(0.7);
+}
+
+.MasoMenos {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    width: 5rem;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 1rem;
+}
+
+#comprarbtn {
+    width: 30rem;
+    height: 3rem;
+    font-family: 'Protest Riot', sans-serif;
+    background-color: var(--dark-verdito);
+    border-radius: 50px;
+    padding: 1rem;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    margin: 2rem auto auto;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+}

@@ -155,6 +155,32 @@ function tipo(tipo) {
     }
 }
 
+// busqueda /////////////////////////
+
+// if (contenedorTargetas !== null) {
+//     obtenerAbrigos();
+// }
+
+let formularioBusqueda = document.getElementById("formularioBusqueda")
+
+formularioBusqueda.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    let inputBuscador = document.getElementById("busqueda");
+    let terminoBusqueda = inputBuscador.value.toLowerCase(); 
+    let elementos = contenedorTargetas.querySelectorAll(".item"); 
+
+    elementos.forEach((elemento) => {
+        let elementoNombre = elemento.textContent.toLowerCase(); 
+
+        if (elementoNombre.includes(terminoBusqueda)) {
+            elemento.style.display = "block";
+        } else {
+            elemento.style.display = "none";
+        }
+    });
+})
+
 
 // Carrito ////////////////
 
@@ -316,44 +342,45 @@ function crearUsuario() {
         });
 }
 
+// codigo movido al html "login.html" debido a que por alguna razon interferia con mi cuenta
 
 //login
-let formulariologin = document.getElementById('formulariologin');
-let nombreLogin = document.getElementById('nombreLogin');
-let contrasenaLogin = document.getElementById('contrasenaLogin');
-let idLogin = document.getElementById('idLogin');
+// const formulariologin = document.getElementById('formulariologin');
+// const nombreLogin = document.getElementById('nombreLogin');
+// const contrasenaLogin = document.getElementById('contrasenaLogin');
+// const idLogin = document.getElementById('idLogin');
 
-formulariologin.addEventListener('submit', event => {
-    event.preventDefault();
+// formulariologin.addEventListener('submit', event => {
+//     event.preventDefault();
 
-    let id = idLogin.value;
-    let nombre = nombreLogin.value;
-    let contrasena = contrasenaLogin.value;
-    let nombreMiniscula = nombre.toLowerCase();
-    let usuarioEncontrado = null;
+//     let id = idLogin.value;
+//     let nombre = nombreLogin.value;
+//     let contrasena = contrasenaLogin.value;
+//     let nombreMiniscula = nombre.toLowerCase();
+//     let usuarioEncontrado = null;
 
-    fetch(`/usuarios/${id}`)
-    .then(response => response.json())
-    .then(usuario => {
-        let nombreUsuario = usuario.nombre.toLowerCase();
+//     fetch(`/usuarios/${id}`)
+//     .then(response => response.json())
+//     .then(usuario => {
+//         let nombreUsuario = usuario.nombre.toLowerCase();
 
-        if (nombreUsuario == nombreMiniscula) {
-            if (usuario.contrasena == contrasena) {
-                usuarioEncontrado = usuario;
-            }
-        }
+//         if (nombreUsuario == nombreMiniscula) {
+//             if (usuario.contrasena == contrasena) {
+//                 usuarioEncontrado = usuario;
+//             }
+//         }
 
-        if (usuarioEncontrado) {
-            alert (`Bienvenido ${usuarioEncontrado.nombre}`);
-            window.location.href = "/";
-        } else {
-            alert ("No hay usuario con ese nombre o contraseña incorrecta");
-        }
-    })
-    .catch(error => {
-        console.error('Error al cargar el archivo JSON:', error);
-    })
-})
+//         if (usuarioEncontrado) {
+//             alert (`Bienvenido ${usuarioEncontrado.nombre}`);
+//             window.location.href = "/";
+//         } else {
+//             alert ("No hay usuario con ese nombre o contraseña incorrecta");
+//         }
+//     })
+//     .catch(error => {
+//         console.error('Error al cargar el archivo JSON:', error);
+//     })
+// })
 
 // Mi cuenta /////////////////////
 

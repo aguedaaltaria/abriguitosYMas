@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="stylesheet" href="../css/abrigo-1.css">
     <!-- <script src="../js/productos.js"></script> -->
+    <link rel="stylesheet" href="../css/carrito.css">
 </head>
 <body>
     <header id="header"> 
@@ -69,7 +70,48 @@
             </div>
         </div>
     </header>
-
+    <div class="contenedorCarrito">
+        <div class="cuadroCarrito">
+            <div id="productosCarrito">
+                <div class="productoCarrito">
+                    <img src="../img/abrigo-ej.jpg" alt="🧥">
+                    <div class="nombreYCantidades">
+                        <h3>abrigo ejemplo</h3>
+                        <p>$15</p>
+                        <p>Total: $15</p>
+                    </div>
+                    <div class="botonesYNum">
+                        <button class="trash"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#75485b"><path d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm336-552H312v480h336v-480ZM384-288h72v-336h-72v336Zm120 0h72v-336h-72v336ZM312-696v480-480Z"/></svg></button>
+                        <div class="MasoMenos">
+                            <button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#75485b"><path d="M232-444v-72h496v72H232Z"/></svg></button>
+                            <span>3</span>
+                            <button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#75485b"><path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z"/></svg></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="productoCarrito">
+                    <img src="../img/abrigo-ej.jpg" alt="🧥">
+                    <div class="nombreYCantidades">
+                        <h3>abrigo ejemplo</h3>
+                        <p>$15</p>
+                        <p>Total: $15</p>
+                    </div>
+                    <div class="botonesYNum">
+                        <button class="trash"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#75485b"><path d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm336-552H312v480h336v-480ZM384-288h72v-336h-72v336Zm120 0h72v-336h-72v336ZM312-696v480-480Z"/></svg></button>
+                        <div class="MasoMenos">
+                            <button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#75485b"><path d="M232-444v-72h496v72H232Z"/></svg></button>
+                            <span>3</span>
+                            <button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#75485b"><path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z"/></svg></button>
+                        </div>
+                    </div>
+                </div>
+                <button id="comprarbtn">
+                    <span>Comprar Pedido</span>
+                    <span>$45</span>
+                </button>
+            </div>
+        </div>
+    </div>
     <script src="../js/abrigo-1.js" defer></script>
 </body>
 </html>
