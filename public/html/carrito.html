@@ -72,46 +72,89 @@
     </header>
     <div class="contenedorCarrito">
         <div class="cuadroCarrito">
-            <div id="productosCarrito">
-                <div class="productoCarrito">
-                    <img src="../img/abrigo-ej.jpg" alt="🧥">
-                    <div class="nombreYCantidades">
-                        <h3>abrigo ejemplo</h3>
-                        <p>$15</p>
-                        <p>Total: $15</p>
-                    </div>
-                    <div class="botonesYNum">
-                        <button class="trash"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#75485b"><path d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm336-552H312v480h336v-480ZM384-288h72v-336h-72v336Zm120 0h72v-336h-72v336ZM312-696v480-480Z"/></svg></button>
-                        <div class="MasoMenos">
-                            <button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#75485b"><path d="M232-444v-72h496v72H232Z"/></svg></button>
-                            <span>3</span>
-                            <button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#75485b"><path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z"/></svg></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="productoCarrito">
-                    <img src="../img/abrigo-ej.jpg" alt="🧥">
-                    <div class="nombreYCantidades">
-                        <h3>abrigo ejemplo</h3>
-                        <p>$15</p>
-                        <p>Total: $15</p>
-                    </div>
-                    <div class="botonesYNum">
-                        <button class="trash"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#75485b"><path d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm336-552H312v480h336v-480ZM384-288h72v-336h-72v336Zm120 0h72v-336h-72v336ZM312-696v480-480Z"/></svg></button>
-                        <div class="MasoMenos">
-                            <button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#75485b"><path d="M232-444v-72h496v72H232Z"/></svg></button>
-                            <span>3</span>
-                            <button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#75485b"><path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z"/></svg></button>
-                        </div>
-                    </div>
-                </div>
-                <button id="comprarbtn">
-                    <span>Comprar Pedido</span>
-                    <span>$45</span>
-                </button>
+            <button id="borrarLocalS" onclick="borrarLocalS()"><svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#75485b"><path d="M600-233.33V-300h150v66.67H600Zm0-352V-652h280v66.67H600Zm0 176V-476h236.67v66.67H600Zm-476.67-254H80V-730h166.67v-50H390v50h166.67v66.67h-43.34v396.66q0 27-19.83 46.84Q473.67-200 446.67-200H190q-27 0-46.83-19.83-19.84-19.84-19.84-46.84v-396.66Zm66.67 0v396.66h256.67v-396.66H190Zm0 0v396.66-396.66Z"/></svg></button>
+            <div id="productosCarritoC">
+                
+                
             </div>
+            <button id="comprarbtn">
+                <span>Comprar Pedido</span>
+                <span id="totalAPagar">$45</span>
+            </button>
         </div>
     </div>
     <script src="../js/abrigo-1.js" defer></script>
+    <script>
+        const productosCarritoC = document.getElementById("productosCarritoC");
+
+        function crearTarjetasCarrito () {
+        let productos = JSON.parse(localStorage.getItem('productos'));
+
+        productos.forEach(producto => {
+            let cantidad = 1;
+            let precioNum = parseFloat(producto.precio);
+            let cantidadyPrecio = precioNum * cantidad;
+            let nuevoProducto = document.createElement("div");
+            nuevoProducto.classList = "productoCarrito";
+            nuevoProducto.innerHTML = `
+                <img src="${producto.imagen}" alt="🧥">
+                <div class="nombreYCantidades">
+                    <h3>${producto.nombre}</h3>
+                    <p>$${producto.precio}</p>
+                    <p>Total: $${cantidadyPrecio}</p>
+                </div>
+                <div class="botonesYNum">
+                    <button class="trash"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#75485b"><path d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm336-552H312v480h336v-480ZM384-288h72v-336h-72v336Zm120 0h72v-336h-72v336ZM312-696v480-480Z"/></svg></button>
+                    <div class="MasoMenos">
+                        <button onclick="menosElementoCarrito (${cantidad})"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#75485b"><path d="M232-444v-72h496v72H232Z"/></svg></button>
+                        <span>${cantidad}</span>
+                        <button onclick="masElementoCarrito (${cantidad})" ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#75485b"><path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z"/></svg></button>
+                    </div>
+                </div>
+            `
+            productosCarritoC.appendChild(nuevoProducto);
+            });
+
+            let totalAPagar = document.getElementById("totalAPagar");
+            let productoCarritoTodos = document.querySelectorAll(".productoCarrito")
+
+            let ArrayProductoCarritoTodos = [...productoCarritoTodos];
+
+            let totalPrecio = productos.reduce((acumulador, producto) => {
+                return acumulador + parseFloat(producto.precio);
+            }, 0);
+
+            totalAPagar.innerHTML = `$${totalPrecio}`;
+        }
+
+        function borrarLocalS() {
+            localStorage.clear();
+
+            let productoCarritoTodos = document.querySelectorAll(".productoCarrito");
+
+            for (let i = 0; i < productoCarritoTodos.length; i++) {
+                let productoSolo = productoCarritoTodos[i];
+                productoSolo.style.animation = "eliminar 1s ease-in-out forwards";
+
+                productoSolo.addEventListener('animationend', () => {
+                    productosCarritoC.removeChild(productoSolo);
+
+                    productoCarritoTodos = document.querySelectorAll(".productoCarrito");
+
+                    if (i < productoCarritoTodos.length) {
+                        productoSolo = productoCarritoTodos[i];
+                        productoSolo.style.animation = "eliminar 1s ease-in-out forwards";
+                        productoSolo.addEventListener('animationend', () => {
+                        productosCarritoC.removeChild(productoSolo);
+                        productoCarritoTodos = document.querySelectorAll(".productoCarrito");
+                        });
+                    } else {
+                        productosCarritoC.innerHTML = "";
+                    }
+                });
+            }
+        }
+        crearTarjetasCarrito ()
+    </script>
 </body>
 </html>

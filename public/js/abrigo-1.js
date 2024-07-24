@@ -19,7 +19,7 @@ function crearTarjetas(productos) {
 <div class="elemento ${producto.color}">     
     <div class="icon-item-corazon">
         <div class="icon-item">
-            <button class="carritoAniadir" onclick="addCar('${producto.nombre}', ${producto.precio})">
+            <button class="carritoAniadir" onclick="addCar( '${producto.id}' ,'${producto.imagen}', '${producto.nombre}', ${producto.precio})">
                 <span class="material-symbols-outlined shopping-cart-item">
                     add_shopping_cart
                     </span>
@@ -161,25 +161,31 @@ function tipo(tipo) {
 //     obtenerAbrigos();
 // }
 
-let formularioBusqueda = document.getElementById("formularioBusqueda")
+let formularioBusqueda = document.getElementById("formularioBusqueda");
 
-formularioBusqueda.addEventListener('submit', (event) => {
+formularioBusqueda.addEventListener("submit", (event) => {
     event.preventDefault();
 
     let inputBuscador = document.getElementById("busqueda");
-    let terminoBusqueda = inputBuscador.value.toLowerCase(); 
-    let elementos = contenedorTargetas.querySelectorAll(".item"); 
+    let terminoBusqueda = inputBuscador.value.trim().toLowerCase();
+    let elementos = contenedorTargetas.querySelectorAll(".item");
 
     elementos.forEach((elemento) => {
-        let elementoNombre = elemento.textContent.toLowerCase(); 
+        let elementoNombre = elemento.textContent.toLowerCase();
 
-        if (elementoNombre.includes(terminoBusqueda)) {
+        if (terminoBusqueda.startsWith("-")) {
+            if (!elementoNombre.includes(terminoBusqueda.slice(1))) {
+                elemento.style.display = "block";
+            } else {
+                elemento.style.display = "none";
+            }
+        } else if (elementoNombre.includes(terminoBusqueda)) {
             elemento.style.display = "block";
         } else {
             elemento.style.display = "none";
         }
     });
-})
+});
 
 
 // Carrito ////////////////
@@ -205,10 +211,20 @@ carrito.addEventListener('mouseout', function() {
     }, 7000);
 });
 
-function addCar(producto, precio) {
+function addCar(id, imagen, producto, precio) {
     listPago.innerHTML += `
     <li class="productoPago"><p>${producto}</p><span class= "precioPago">$${precio}</span></li>
     `
+    let productos = JSON.parse(localStorage.getItem('productos')) || [];
+
+    let nuevoProducto = {
+        id: id,
+        imagen: imagen,
+        nombre: producto,
+        precio: parseFloat(precio)
+    };
+    productos.push(nuevoProducto);
+    localStorage.setItem('productos', JSON.stringify(productos));
     actualizar();
 }
 
@@ -216,7 +232,8 @@ function borrarpago() {
     let productoPago = listPago.querySelectorAll('.productoPago');
     listPago.innerHTML = "";
     numCarrito.innerHTML = '0';
-    total.innerHTML = `$0`
+    total.innerHTML = `$0`;
+    localStorage.clear();
 }
 
 function actualizar() {
@@ -234,6 +251,39 @@ function actualizar() {
 
     total.innerHTML = `$${precioReduce}`;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Menu ////////////
