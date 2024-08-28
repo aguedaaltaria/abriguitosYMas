@@ -221,7 +221,8 @@ function addCar(id, imagen, producto, precio) {
         id: id,
         imagen: imagen,
         nombre: producto,
-        precio: parseFloat(precio)
+        precio: parseFloat(precio),
+        cantidad: 1
     };
     productos.push(nuevoProducto);
     localStorage.setItem('productos', JSON.stringify(productos));
@@ -251,39 +252,6 @@ function actualizar() {
 
     total.innerHTML = `$${precioReduce}`;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // Menu ////////////

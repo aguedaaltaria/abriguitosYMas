@@ -79,82 +79,13 @@
             </div>
             <button id="comprarbtn">
                 <span>Comprar Pedido</span>
-                <span id="totalAPagar">$45</span>
+                <span id="totalAPagar">$0</span>
             </button>
         </div>
+
+
     </div>
     <script src="../js/abrigo-1.js" defer></script>
-    <script>
-        const productosCarritoC = document.getElementById("productosCarritoC");
-
-        function crearTarjetasCarrito () {
-        let productos = JSON.parse(localStorage.getItem('productos'));
-
-        productos.forEach(producto => {
-            let cantidad = 1;
-            let precioNum = parseFloat(producto.precio);
-            let cantidadyPrecio = precioNum * cantidad;
-            let nuevoProducto = document.createElement("div");
-            nuevoProducto.classList = "productoCarrito";
-            nuevoProducto.innerHTML = `
-                <img src="${producto.imagen}" alt="🧥">
-                <div class="nombreYCantidades">
-                    <h3>${producto.nombre}</h3>
-                    <p>$${producto.precio}</p>
-                    <p>Total: $${cantidadyPrecio}</p>
-                </div>
-                <div class="botonesYNum">
-                    <button class="trash"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#75485b"><path d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-48v-72h192v-48h192v48h192v72h-48v479.57Q720-186 698.85-165T648-144H312Zm336-552H312v480h336v-480ZM384-288h72v-336h-72v336Zm120 0h72v-336h-72v336ZM312-696v480-480Z"/></svg></button>
-                    <div class="MasoMenos">
-                        <button onclick="menosElementoCarrito (${cantidad})"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#75485b"><path d="M232-444v-72h496v72H232Z"/></svg></button>
-                        <span>${cantidad}</span>
-                        <button onclick="masElementoCarrito (${cantidad})" ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#75485b"><path d="M444-444H240v-72h204v-204h72v204h204v72H516v204h-72v-204Z"/></svg></button>
-                    </div>
-                </div>
-            `
-            productosCarritoC.appendChild(nuevoProducto);
-            });
-
-            let totalAPagar = document.getElementById("totalAPagar");
-            let productoCarritoTodos = document.querySelectorAll(".productoCarrito")
-
-            let ArrayProductoCarritoTodos = [...productoCarritoTodos];
-
-            let totalPrecio = productos.reduce((acumulador, producto) => {
-                return acumulador + parseFloat(producto.precio);
-            }, 0);
-
-            totalAPagar.innerHTML = `$${totalPrecio}`;
-        }
-
-        function borrarLocalS() {
-            localStorage.clear();
-
-            let productoCarritoTodos = document.querySelectorAll(".productoCarrito");
-
-            for (let i = 0; i < productoCarritoTodos.length; i++) {
-                let productoSolo = productoCarritoTodos[i];
-                productoSolo.style.animation = "eliminar 1s ease-in-out forwards";
-
-                productoSolo.addEventListener('animationend', () => {
-                    productosCarritoC.removeChild(productoSolo);
-
-                    productoCarritoTodos = document.querySelectorAll(".productoCarrito");
-
-                    if (i < productoCarritoTodos.length) {
-                        productoSolo = productoCarritoTodos[i];
-                        productoSolo.style.animation = "eliminar 1s ease-in-out forwards";
-                        productoSolo.addEventListener('animationend', () => {
-                        productosCarritoC.removeChild(productoSolo);
-                        productoCarritoTodos = document.querySelectorAll(".productoCarrito");
-                        });
-                    } else {
-                        productosCarritoC.innerHTML = "";
-                    }
-                });
-            }
-        }
-        crearTarjetasCarrito ()
-    </script>
+    <script src="../js/carrito.js"></script>
 </body>
 </html>

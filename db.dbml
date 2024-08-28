@@ -1,0 +1,72 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table abriguitos {
+  id integer [primary key]
+  nombre varchar
+  marca varchar
+  tipo varchar
+}
+
+Table usuarios {
+  id integer [primary key]
+  nombre varchar
+  apellido varchar
+  correo varchar
+  telefono varchar
+  password secret [note: 'revisar funcioonamiento']
+}
+
+Table especificaciones_abriguito
+ {
+  id_abriguito integer [primary key]
+  color varchar [primary key]
+  size enum [primary key]
+  precio_bruto float
+  stock integer
+  picture blob
+}
+
+Table historial_pedidos {
+  id integer [primary key]
+  date date
+  id_abriguito integer
+  id_usuario integer
+  id_direccion integer
+  cantidad integer
+  color varchar
+  size enum
+  precio_unidad float
+  precio_envio float
+  precio_taxes float
+}
+
+Table favoritos {
+  id_usuario integer [primary key]
+  id_abriguito integer [primary key]
+  color varchar
+  size enum
+}
+
+Table direccion {
+    id integer [primary key]
+    id_usuario integer
+    calle varchar
+    nombre_entrega varchar
+    estado enum
+    ciudad enum
+    pais enum
+    zipcode integer
+}
+
+Ref: direccion.id_usuario > usuarios.id
+Ref: favoritos.id_abriguito > abriguitos.id
+Ref: favoritos.id_usuario > usuarios.id
+Ref: favoritos.color > especificaciones_abriguito.color
+Ref: favoritos.size > especificaciones_abriguito.size
+Ref: historial_pedidos.id_usuario > usuarios.id
+Ref: historial_pedidos.id_abriguito > abriguitos.id
+Ref: historial_pedidos.color > especificaciones_abriguito.color
+Ref: historial_pedidos.size > especificaciones_abriguito.size
+Ref: historial_pedidos.id_direccion > direccion.id
+Ref: especificaciones_abriguito.id_abriguito > abriguitos.id

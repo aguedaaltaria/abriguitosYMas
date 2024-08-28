@@ -81,12 +81,21 @@ img {
 .nombreYCantidades h3 {
     font-size: 1.2rem;
     width: 15rem;
+    transform: translateY(-0.5rem);
 }
 
-.nombreYCantidades p:nth-child(3) {
+.totalPladoBTNSprevio {
+    font-size: 1rem;
+    transform: translate(-19.2rem, 1.5rem);
+}
+
+.totalPladoBTNS {
     color: var(--grisito);
     font-size: .9rem;
+    transform: translate(-19.2rem, 5px);
 }
+
+
 
 button:active {
     transform: scale(0.75);
@@ -108,22 +117,34 @@ button:active {
 .trash {
     display: flex;
     justify-content: flex-end;
-    transform: translate(5rem, -2rem);
+    transform: translate(4.5rem, -.5rem);
 }
 
 .trash:active {
     display: flex;
     justify-content: flex-end;
-    transform: translate(5rem, -2rem) scale(0.7);
+    transform: translate(4.5rem, -.5rem) scale(0.7);
 }
 
 .MasoMenos {
-    opacity: 0;
+    /* opacity: 0; */
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     width: 5rem;
-    /* display: flex; */
+    display: flex;
     justify-content: space-around;
     border-radius: 1rem;
+    align-items: center;
+}
+
+.MasoMenos h4, h5 {
+    /* opacity: 0; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--dark-rosadito);
+    font-size: 1.5rem;
+    transform: translateY(-4px);
+    font-weight: 400;
 }
 
 #borrarLocalS {
@@ -133,7 +154,7 @@ button:active {
 }
 
 #borrarLocalS:active {
-    transform: translate(70%, -1rem) scale(0.9);
+    transform: translate(70, -1rem) scale(0.9);
 }
 
 #comprarbtn {
