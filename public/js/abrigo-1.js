@@ -289,70 +289,110 @@ function cambioOpacity() {
 
 // register
 let nombreRegister = document.getElementById('nombreRegister');
+let apellidoRegister = document.getElementById('apellidoRegister');
 let correoRegister = document.getElementById('correoRegister');
-let direccionRegister = document.getElementById('direccionRegister');
+let telefonoRegister = document.getElementById('telefonoRegister');
 let ContrasenaRegister = document.getElementById('ContrasenaRegister');
+let calleRegister = document.getElementById('calleRegister');
+let nombre_entregaRegister = document.getElementById('nombre_entregaRegister');
+let estadoRegister = document.getElementById('estadoRegister');
+let ciudadRegister = document.getElementById('ciudadRegister');
+let paisRegister = document.getElementById('paisRegister');
+let zipcodeRegister = document.getElementById('zipcodeRegister');
 
 let usuarios = [];
 
 class Usuario {
-    constructor(nombre, correo, contrasena, direccion) {
-        this.id = generarID(nombre);
+    constructor(nombre, apellido, correo, telefono, contrasena, calle, nombre_entrega, estado, ciudad, pais, zipcode ) {
+        this.id = generarID(correo);
         this.nombre = nombre;
+        this.apellido = apellido;
         this.correo = correo;
+        this.telefono = telefono;
         this.contrasena = contrasena;
-        this.direccion = direccion;
+        this.ID_direccion = generarID(`${calle}${nombre_entrega}`);
+        this.calle = calle;
+        this.nombre_entrega = nombre_entrega;
+        this.estado = estado;
+        this.ciudad = ciudad;
+        this.pais = pais;
+        this.zipcode = zipcode;
         this.historialPedidos = [];
         this.favoritos = [];
         usuarios.push(this);
     }
 }
 
-function generarID(nombre) {
-    let numeros = "0123456789";
+function generarID(str) {
+    const hash = str.hashCode();
+    return Math.abs(hash % 10000); 
+}
 
-    let partes = nombre.split(' ');
-    if (partes.length !== 2) {
-        alert ("Error, debe escribir su primer nombre y su primer apellido");
+String.prototype.hashCode = function() {
+    var hash = 0;
+    if (this.length === 0) return hash;
+    for (var i = 0; i < this.length; i++) {
+        hash = ((hash << 5) - hash) + this.charCodeAt(i);   
+        hash |= 0;
     }
+    return hash;
+};
 
-    let nombreM = partes[0].toUpperCase();
-    let apellidoM = partes[1].toUpperCase();
+function formatoTelefono (input) {
+    if (input.length === 10) {
+        let numeroString = input.toString();
+        numeroString = numeroString.slice(0, 10);
+        let parte1 = numeroString.slice(0, 3);
+        let parte2 = numeroString.slice(3, 6);
+        let parte3 = numeroString.slice(6);
 
-    let primeraLetraNombre = nombreM.charAt(0);
-    let primeraLetraApellido = apellidoM.charAt(0);
+        let telefonoConFormato = `(${parte1}) ${parte2} - ${parte3}`;
 
-    let letras = primeraLetraNombre + primeraLetraApellido;
+        return telefonoConFormato;
+    } else if (input.length === 11) {
+        let numeroString = input.toString();
+        numeroString = numeroString.slice(0, 11);
+        let parte0 = numeroString.slice(0);
+        let parte1 = numeroString.slice(1, 4);
+        let parte2 = numeroString.slice(4, 7);
+        let parte3 = numeroString.slice(7);
 
-    let id = "";
-    for (let i = 0; i < 1; i++) {
-        id += letras
+        let telefonoConFormato = `+${parte0} (${parte1}) ${parte2} - ${parte3}`;
+
+        return telefonoConFormato;
+    } else {
+        alert('Escriba el telefono completo (los 10 numeros) sin guiones, ni espacios, ni signos');
     }
+}
 
-    for (let i = 0; i < 4; i++) {
-      id += numeros.charAt(Math.floor(Math.random() * numeros.length));
-    }
-
-    return id; 
+function mayusculaPrimeraLetra1 (str) {
+    return palabra[0].toUpperCase() + palabra.slice(1);
 }
 
 function crearUsuario() {
-    let nombre = nombreRegister.value;
+    let nombre = mayusculaPrimeraLetra1(nombreRegister.value);
+    let apellido = mayusculaPrimeraLetra1(apellidoRegister.value);
     let correo = correoRegister.value;
+    let telefono = formatoTelefono(telefonoRegister.value);
     let contrasena = ContrasenaRegister.value;
-    let direccion = direccionRegister.value;
-    let newUsuario = new Usuario(nombre, correo, contrasena, direccion);
+    let calle = calleRegister.value;
+    let nombre_entrega = mayusculaPrimeraLetra1(nombre_entregaRegister.value);
+    let estado = mayusculaPrimeraLetra1(estadoRegister.value);
+    let ciudad = mayusculaPrimeraLetra1(ciudadRegister.value);
+    let pais = mayusculaPrimeraLetra1(paisRegister.value);
+    let zipcode = zipcodeRegister.value;
+    let newUsuario = new Usuario(nombre, apellido, correo, telefono, contrasena, calle, nombre_entrega, estado, ciudad, pais, zipcode );
 
     fetch('/usuarios', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(newUsuario) // Send the user data as JSON
+        body: JSON.stringify(newUsuario)
     })
         .then(response => response.json())
         .then(data => {
-            alert (`Bienvenido a Abriguitos & Mas ${data.nombre}, Tu nuevo ID es ${data.id}`);
+            alert (`Bienvenido a Abriguitos & Mas ${data.nombre} ${data.apellido}, Tu nuevo ID es ${data.id}`);
             window.location.href = "/";
         })
         .catch(error => {
@@ -368,37 +408,7 @@ function crearUsuario() {
 // const contrasenaLogin = document.getElementById('contrasenaLogin');
 // const idLogin = document.getElementById('idLogin');
 
-// formulariologin.addEventListener('submit', event => {
-//     event.preventDefault();
-
-//     let id = idLogin.value;
-//     let nombre = nombreLogin.value;
-//     let contrasena = contrasenaLogin.value;
-//     let nombreMiniscula = nombre.toLowerCase();
-//     let usuarioEncontrado = null;
-
-//     fetch(`/usuarios/${id}`)
-//     .then(response => response.json())
-//     .then(usuario => {
-//         let nombreUsuario = usuario.nombre.toLowerCase();
-
-//         if (nombreUsuario == nombreMiniscula) {
-//             if (usuario.contrasena == contrasena) {
-//                 usuarioEncontrado = usuario;
-//             }
-//         }
-
-//         if (usuarioEncontrado) {
-//             alert (`Bienvenido ${usuarioEncontrado.nombre}`);
-//             window.location.href = "/";
-//         } else {
-//             alert ("No hay usuario con ese nombre o contraseña incorrecta");
-//         }
-//     })
-//     .catch(error => {
-//         console.error('Error al cargar el archivo JSON:', error);
-//     })
-// })
+// ...
 
 // Mi cuenta /////////////////////
 
@@ -411,40 +421,62 @@ formularioAcceder.addEventListener('submit', event => {
     event.preventDefault();
 
     const idGET = (document.getElementById("idGET")).value;
+    const nombreGET = (document.getElementById("nombreGET")).value;
+    const apellidoGET = (document.getElementById("apellidoGET")).value;
+    const contrasenaGET = (document.getElementById("contrasenaGET")).value;
+    let nombreMiniscula = nombreGET.toLowerCase();
+    let apellidoMinuscula = apellidoGET.toLowerCase();
 
     fetch(`/usuarios/${idGET}`)
     .then(response => response.json())
     .then((data) => {
         if (data) {
-            cuadroAcceder.style.left = "-100vw";
-            info.innerHTML = `
-            <table>
-                    <tr>
-                        <td>ID:</td>
-                        <td>${data.id}</td>
-                    </tr>
-                    <tr>
-                        <td>Nombre:</td>
-                        <td>${data.nombre}</td>
-                    </tr>
-                    <tr>
-                        <td>Correo electronico:</td>
-                        <td>${data.correo}</td>
-                    </tr>
-                    <tr>
-                        <td>Direccion:</td>
-                        <td>${data.direccion}</td>
-                    </tr>
-                    <tr>
-                        <td>Contrasena:</td>
-                        <td>${data.contrasena}</td>
-                    </tr>
-                    <tr>
-                        <td>Historial de pedidos:</td>
-                        <td>Ha hecho ${data.historialPedidos.length} pedidos</td>
-                    </tr>
-                </table>
-            `;
+            let nombreUsuario = data.nombre.toLowerCase();
+            let apellidoUsuario = data.apellido.toLowerCase();
+
+            if (nombreUsuario == nombreMiniscula) {
+                if (apellidoUsuario == apellidoMinuscula) {
+                    if (contrasenaGET == data.contrasena) {
+                        cuadroAcceder.style.left = "-100vw";
+                        info.innerHTML = `
+                        <table>
+                                <tr>
+                                    <td>ID:</td>
+                                    <td>${data.id}</td>
+                                </tr>
+                                <tr>
+                                    <td>Nombre y Apellido:</td>
+                                    <td>${data.nombre} ${data.apellido}</td>
+                                </tr>
+                                <tr>
+                                    <td>Correo electronico:</td>
+                                    <td>${data.correo}</td>
+                                </tr>
+                                <tr>
+                                    <td>Telefono:</td>
+                                    <td>${data.telefono}</td>
+                                </tr>
+                                <tr>
+                                    <td>Contrasena:</td>
+                                    <td>${data.contrasena}</td>
+                                </tr>
+                                <tr>
+                                    <td>Direccion:</td>
+                                    <td>${data.calle}, ${data.ciudad}, ${data.estado}, ${data.pais}</td>
+                                </tr>
+                                <tr>
+                                    <td>Zipcode:</td>
+                                    <td>${data.zipcode}</td>
+                                </tr>
+                                <tr>
+                                    <td>Historial de pedidos:</td>
+                                    <td>Ha hecho ${data.historialPedidos.length} pedidos</td>
+                                </tr>
+                            </table>
+                        `;
+                    }
+                }
+            }
         } else {
             console.error('Error: No se encontraron datos de ese usuario.');
         }

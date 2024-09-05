@@ -1,72 +1,129 @@
 // Use DBML to define your database structure
 // Docs: https://dbml.dbdiagram.io/docs
 
-Table abriguitos {
-  id integer [primary key]
-  nombre varchar
-  marca varchar
-  tipo varchar
+Enum "especificaciones_abriguito_tamanio_enum" {
+  "xxs"
+  "xs"
+  "s"
+  "m"
+  "l"
+  "xl"
+  "2xl"
+  "3xl"
+  "4xl"
 }
 
-Table usuarios {
-  id integer [primary key]
-  nombre varchar
-  apellido varchar
-  correo varchar
-  telefono varchar
-  password secret [note: 'revisar funcioonamiento']
+Enum "historial_pedidos_tamanio_enum" {
+  "xxs"
+  "xs"
+  "s"
+  "m"
+  "l"
+  "xl"
+  "2xl"
+  "3xl"
+  "4xl"
 }
 
-Table especificaciones_abriguito
- {
-  id_abriguito integer [primary key]
-  color varchar [primary key]
-  size enum [primary key]
-  precio_bruto float
-  stock integer
-  picture blob
+Enum "historial_pedidos_estado_envio_enum" {
+  "pendiente"
+  "enviado"
+  "entregado"
 }
 
-Table historial_pedidos {
-  id integer [primary key]
-  date date
-  id_abriguito integer
-  id_usuario integer
-  id_direccion integer
-  cantidad integer
-  color varchar
-  size enum
-  precio_unidad float
-  precio_envio float
-  precio_taxes float
+Enum "favoritos_tamanio_enum" {
+  "xxs"
+  "xs"
+  "s"
+  "m"
+  "l"
+  "xl"
+  "2xl"
+  "3xl"
+  "4xl"
 }
 
-Table favoritos {
-  id_usuario integer [primary key]
-  id_abriguito integer [primary key]
-  color varchar
-  size enum
+Table "marcas" {
+  "ID_marca" INT [pk, increment]
+  "nombre_marca" VARCHAR(100) [not null]
 }
 
-Table direccion {
-    id integer [primary key]
-    id_usuario integer
-    calle varchar
-    nombre_entrega varchar
-    estado enum
-    ciudad enum
-    pais enum
-    zipcode integer
+Table "tipos" {
+  "ID_tipo" INT [pk, increment]
+  "nombre_tipo" VARCHAR(100) [not null]
 }
 
-Ref: direccion.id_usuario > usuarios.id
-Ref: favoritos.id_abriguito > abriguitos.id
-Ref: favoritos.id_usuario > usuarios.id
-Ref: favoritos.color > especificaciones_abriguito.color
-Ref: favoritos.size > especificaciones_abriguito.size
-Ref: historial_pedidos.id_usuario > usuarios.id
-Ref: historial_pedidos.id_abriguito > abriguitos.id
-Ref: historial_pedidos.color > especificaciones_abriguito.color
-Ref: historial_pedidos.size > especificaciones_abriguito.size
-Ref: historial_pedidos.id_direccion > direccion.id
-Ref: especificaciones_abriguito.id_abriguito > abriguitos.id
+Table "abriguitos" {
+  "ID" INT [pk, increment]
+  "nombre" VARCHAR(150) [not null]
+  "ID_marca" INT
+  "ID_tipo" INT
+}
+
+Table "usuarios" {
+  "ID" INT [pk, increment]
+  "nombre" VARCHAR(50) [not null]
+  "apellido" VARCHAR(50)
+  "correo" VARCHAR(100) [unique, not null]
+  "telefono" VARCHAR(25)
+  "contrasenia" VARCHAR(255) [not null]
+}
+
+Table "especificaciones_abriguito" {
+  "ID_abriguito" INT [not null]
+  "color" VARCHAR(20) [not null]
+  "tamanio" especificaciones_abriguito_tamanio_enum [not null]
+  "precio_bruto" float [not null]
+  "stock" int
+  "imagen" blob
+
+  Indexes {
+    (ID_abriguito, color, tamanio) [pk]
+  }
+}
+
+Table "direccion" {
+  "ID" INT [pk]
+  "ID_usuario" INT
+  "calle" VARCHAR(30)
+  "nombre_entrega" VARCHAR(25)
+  "estado" VARCHAR(50)
+  "ciudad" VARCHAR(50)
+  "pais" VARCHAR(50)
+  "zipcode" INT
+}
+
+Table "historial_pedidos" {
+  "ID" INT [pk, increment]
+  "fecha_facturacion" TIMESTAMP [default: `CURRENT_TIMESTAMP`]
+  "ID_abriguito" INT
+  "ID_usuario" INT
+  "ID_direccion" INT
+  "cantidad" INT
+  "color" VARCHAR(20) [not null]
+  "tamanio" historial_pedidos_tamanio_enum [not null]
+  "precio_unidad" float [not null]
+  "precio_envio" float
+  "precio_taxes" float
+  "precio_total" float [not null]
+  "estado_envio" historial_pedidos_estado_envio_enum [default: 'pendiente']
+  "fecha_entrega" DATE
+}
+
+Table "favoritos" {
+  "ID" INT [pk, increment]
+  "ID_usuario" INT [not null]
+  "ID_abriguito" INT [not null]
+  "color" VARCHAR(20) [not null]
+  "tamanio" favoritos_tamanio_enum [not null]
+}
+
+Ref:"marcas"."ID_marca" < "abriguitos"."ID_marca"
+Ref:"tipos"."ID_tipo" < "abriguitos"."ID_tipo"
+Ref:"abriguitos"."ID" < "especificaciones_abriguito"."ID_abriguito"
+Ref:"usuarios"."ID" < "direccion"."ID_usuario"
+Ref:"abriguitos"."ID" < "historial_pedidos"."ID_abriguito"
+Ref:"usuarios"."ID" < "historial_pedidos"."ID_usuario"
+Ref:"direccion"."ID" < "historial_pedidos"."ID_direccion"
+Ref:"abriguitos"."ID" < "favoritos"."ID_abriguito"
+Ref:"usuarios"."ID" < "favoritos"."ID_usuario"

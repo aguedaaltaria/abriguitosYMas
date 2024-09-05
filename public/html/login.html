@@ -88,7 +88,9 @@
                 <input id="idLogin" type="text">
                 <label for="nombreLogin">Nombre</label>
                 <input id="nombreLogin" type="text">
-                <label for="contrasenaLogin">Contrasena</label>
+                <label for="apellidoLogin">Apellido</label>
+                <input id="apellidoLogin" type="text">
+                <label for="contrasenaLogin">Contrasenia</label>
                 <input id="contrasenaLogin" type="password">
                 <a href=""><p>¿Olvidaste tu contrasenia?</p></a>
                 <div class="botonesLogin">
@@ -104,6 +106,7 @@
     <script>
         const formulariologin = document.getElementById('formulariologin');
         const nombreLogin = document.getElementById('nombreLogin');
+        const apellidoLogin = document.getElementById('apellidoLogin');
         const contrasenaLogin = document.getElementById('contrasenaLogin');
         const idLogin = document.getElementById('idLogin');
 
@@ -112,26 +115,31 @@
 
             let id = idLogin.value;
             let nombre = nombreLogin.value;
+            let apellido = apellidoLogin.value;
             let contrasena = contrasenaLogin.value;
             let nombreMiniscula = nombre.toLowerCase();
+            let apellidoMinuscula = apellido.toLowerCase();
             let usuarioEncontrado = null;
 
             fetch(`/usuarios/${id}`)
             .then(response => response.json())
             .then(usuario => {
                 let nombreUsuario = usuario.nombre.toLowerCase();
+                let apellidoUsuario = usuario.apellido.toLowerCase();
 
                 if (nombreUsuario == nombreMiniscula) {
-                    if (usuario.contrasena == contrasena) {
-                        usuarioEncontrado = usuario;
+                    if (apellidoUsuario == apellidoMinuscula) {
+                        if (usuario.contrasena == contrasena) {
+                            usuarioEncontrado = usuario;
+                        }
                     }
                 }
 
                 if (usuarioEncontrado) {
-                    alert (`Bienvenido ${usuarioEncontrado.nombre}`);
+                    alert (`Bienvenido ${usuario.nombre} ${usuario.apellido}`);
                     window.location.href = "/";
                 } else {
-                    alert ("No hay usuario con ese nombre o contraseña incorrecta");
+                    alert ("No hay usuario con ese nombre o la contraseña esta incorrecta");
                 }
             })
             .catch(error => {
