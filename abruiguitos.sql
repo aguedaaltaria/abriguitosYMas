@@ -2,16 +2,19 @@
 
 USE abriguitos;
 
+-- 1
 -- CREATE TABLE marcas (
 --     ID_marca INT AUTO_INCREMENT PRIMARY KEY,
 --     nombre_marca VARCHAR(100) NOT NULL
 -- );
 
+-- 2
 -- CREATE TABLE tipos (
 --     ID_tipo INT AUTO_INCREMENT PRIMARY KEY,
 --     nombre_tipo VARCHAR(100) NOT NULL
 -- );
 
+-- 3
 -- CREATE TABLE abriguitos (
 --     ID INT AUTO_INCREMENT PRIMARY KEY,
 --     nombre VARCHAR(150) NOT NULL,
@@ -21,6 +24,7 @@ USE abriguitos;
 --     FOREIGN KEY (ID_tipo) REFERENCES tipos(ID_tipo)
 -- );
 
+-- 4
 -- CREATE TABLE usuarios (
 --     ID INT AUTO_INCREMENT PRIMARY KEY,
 --     nombre VARCHAR(50) NOT NULL,
@@ -41,6 +45,7 @@ USE abriguitos;
 --     FOREIGN KEY (ID_abriguito) REFERENCES abriguitos(ID)
 -- );
 
+-- 5
 -- CREATE TABLE direccion (
 --     ID INT PRIMARY KEY,
 --     ID_usuario INT,
@@ -53,6 +58,7 @@ USE abriguitos;
 --     FOREIGN KEY (ID_usuario) REFERENCES usuarios(ID)
 -- );
 
+-- 6
 -- CREATE TABLE historial_pedidos (
 --     ID INT AUTO_INCREMENT PRIMARY KEY,
 --     fecha_facturacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -73,6 +79,7 @@ USE abriguitos;
 --     FOREIGN KEY (ID_direccion) REFERENCES direccion(ID)
 -- );
 
+-- 7
 -- CREATE TABLE favoritos (
 --     ID INT AUTO_INCREMENT PRIMARY KEY,
 --     ID_usuario INT NOT NULL,
@@ -93,7 +100,7 @@ USE abriguitos;
 --     telefono,
 --     contrasenia
 -- ) VALUES (
---     '9858', 
+--     '49858', 
 --     'Mariana', 
 --     'Gomez',  
 --     'marianagomez@email.com',
@@ -109,7 +116,7 @@ USE abriguitos;
 --     telefono,
 --     contrasenia
 -- ) VALUES (
---     '7817', 
+--     '47817', 
 --     'Pedro', 
 --     'Rodriguez',  
 --     'pedro.r@email.com',
@@ -125,7 +132,7 @@ USE abriguitos;
 --     telefono,
 --     contrasenia
 -- ) VALUES (
---     '5630', 
+--     '45630', 
 --     'Sofia', 
 --     'Martinez',  
 --     'sofim57@email.com',
@@ -141,7 +148,7 @@ USE abriguitos;
 --     telefono,
 --     contrasenia
 -- ) VALUES (
---     '0512', 
+--     '40512', 
 --     'Juan', 
 --     'Perez',  
 --     'jp@gmail.com',
@@ -157,7 +164,7 @@ USE abriguitos;
 --     telefono,
 --     contrasenia
 -- ) VALUES (
---     '7566', 
+--     '47566', 
 --     'Mateo', 
 --     'Peralta',  
 --     'mppp@gmail.com',
@@ -165,5 +172,1272 @@ USE abriguitos;
 --     'batata123'
 -- );
 
-SELECT * FROM usuarios;
+-- SELECT * FROM usuarios;
 
+
+
+-- INSERT INTO marcas (
+--     ID_marca, 
+--     nombre_marca
+-- ) VALUES (
+--     '16107', 
+--     'Glamour' 
+-- );
+
+-- INSERT INTO marcas (
+--     ID_marca,
+--     nombre_marca
+-- ) VALUES (
+--     '11047', 
+--     'Amazon Essencial'
+-- );
+
+-- SELECT * FROM marcas;
+
+
+
+
+
+-- INSERT INTO tipos (
+--     ID_tipo,
+--     nombre_tipo
+-- ) VALUES (
+--     '22243', 
+--     'Acampanado'
+-- );
+
+-- INSERT INTO tipos (
+--     ID_tipo,
+--     nombre_tipo
+-- ) VALUES (
+--     '27935', 
+--     'Gabardina'
+-- );
+
+-- INSERT INTO tipos (
+--     ID_tipo,
+--     nombre_tipo
+-- ) VALUES (
+--     '25021', 
+--     'Pluma'
+-- );
+
+-- SELECT * FROM tipos;
+
+
+
+
+-- INSERT INTO abriguitos (
+--     ID,
+--     nombre,
+--     ID_marca,
+--     ID_tipo
+-- ) VALUES (
+--     '30905', 
+--     'Abrigo gris grisito',
+--     '16107',
+--     '22243'
+-- );
+
+-- INSERT INTO abriguitos (
+--     ID,
+--     nombre,
+--     ID_marca,
+--     ID_tipo
+-- ) VALUES (
+--     '35723', 
+--     'Abrigo Ejemplo',
+--     '16107',
+--     '27935'
+-- );
+
+-- INSERT INTO abriguitos (
+--     ID,
+--     nombre,
+--     ID_marca,
+--     ID_tipo
+-- ) VALUES (
+--     '34803', 
+--     'Abrigo rojo rojito',
+--     '16107',
+--     '27935'
+-- );
+
+-- INSERT INTO abriguitos (
+--     ID,
+--     nombre,
+--     ID_marca,
+--     ID_tipo
+-- ) VALUES (
+--     '31005', 
+--     'Abrigo acolchado, ligero y resistente al agua con capucha',
+--     '11047',
+--     '25021'
+-- );
+
+-- SELECT * FROM abriguitos;
+
+
+
+
+
+-- INSERT INTO especificaciones_abriguito (
+--     ID_abriguito,
+--     color,
+--     tamanio,
+--     precio_bruto,
+--     stock,
+--     imagen
+-- ) VALUES (
+--     '30905', 
+--     'Gris',
+--     'xxs',
+--     '30.00',
+--     '5',
+--     '../img/abrigo-gris.jpg'
+-- );
+
+-- INSERT INTO especificaciones_abriguito (
+--     ID_abriguito,
+--     color,
+--     tamanio,
+--     precio_bruto,
+--     stock,
+--     imagen
+-- ) VALUES (
+--     '30905', 
+--     'Gris',
+--     'xs',
+--     '30.00',
+--     '5',
+--     '../img/abrigo-gris.jpg'
+-- );
+
+-- INSERT INTO especificaciones_abriguito (
+--     ID_abriguito,
+--     color,
+--     tamanio,
+--     precio_bruto,
+--     stock,
+--     imagen
+-- ) VALUES (
+--     '30905', 
+--     'Gris',
+--     's',
+--     '30.00',
+--     '5',
+--     '../img/abrigo-gris.jpg'
+-- );
+
+-- INSERT INTO especificaciones_abriguito (
+--     ID_abriguito,
+--     color,
+--     tamanio,
+--     precio_bruto,
+--     stock,
+--     imagen
+-- ) VALUES (
+--     '30905', 
+--     'Gris',
+--     'm',
+--     '30.00',
+--     '5',
+--     '../img/abrigo-gris.jpg'
+-- );
+
+-- INSERT INTO especificaciones_abriguito (
+--     ID_abriguito,
+--     color,
+--     tamanio,
+--     precio_bruto,
+--     stock,
+--     imagen
+-- ) VALUES (
+--     '30905', 
+--     'Gris',
+--     'l',
+--     '30.00',
+--     '5',
+--     '../img/abrigo-gris.jpg'
+-- );
+
+-- INSERT INTO especificaciones_abriguito (
+--     ID_abriguito,
+--     color,
+--     tamanio,
+--     precio_bruto,
+--     stock,
+--     imagen
+-- ) VALUES (
+--     '30905', 
+--     'Gris',
+--     'xl',
+--     '30.00',
+--     '5',
+--     '../img/abrigo-gris.jpg'
+-- );
+
+-- INSERT INTO especificaciones_abriguito (
+--     ID_abriguito,
+--     color,
+--     tamanio,
+--     precio_bruto,
+--     stock,
+--     imagen
+-- ) VALUES (
+--     '30905', 
+--     'Gris',
+--     '2xl',
+--     '30.00',
+--     '5',
+--     '../img/abrigo-gris.jpg'
+-- );
+
+-- INSERT INTO especificaciones_abriguito (
+--     ID_abriguito,
+--     color,
+--     tamanio,
+--     precio_bruto,
+--     stock,
+--     imagen
+-- ) VALUES (
+--     '30905', 
+--     'Gris',
+--     '3xl',
+--     '30.00',
+--     '5',
+--     '../img/abrigo-gris.jpg'
+-- );
+
+-- INSERT INTO especificaciones_abriguito (
+--     ID_abriguito,
+--     color,
+--     tamanio,
+--     precio_bruto,
+--     stock,
+--     imagen
+-- ) VALUES (
+--     '30905', 
+--     'Gris',
+--     '4xl',
+--     '30.00',
+--     '5',
+--     '../img/abrigo-gris.jpg'
+-- );
+
+-- INSERT INTO especificaciones_abriguito (
+--     ID_abriguito,
+--     color,
+--     tamanio,
+--     precio_bruto,
+--     stock,
+--     imagen
+-- ) VALUES (
+--     '31005', 
+--     'Beige',
+--     'xxs',
+--     '20.00',
+--     '5',
+--     '../img/abrigoacolchado.png'
+-- );
+
+-- INSERT INTO especificaciones_abriguito (
+--     ID_abriguito,
+--     color,
+--     tamanio,
+--     precio_bruto,
+--     stock,
+--     imagen
+-- ) VALUES (
+--     '31005', 
+--     'Beige',
+--     's',
+--     '20.00',
+--     '5',
+--     '../img/abrigoacolchado.png'
+-- );
+
+-- INSERT INTO especificaciones_abriguito (
+--     ID_abriguito,
+--     color,
+--     tamanio,
+--     precio_bruto,
+--     stock,
+--     imagen
+-- ) VALUES (
+--     '31005', 
+--     'Beige',
+--     'm',
+--     '20.00',
+--     '5',
+--     '../img/abrigoacolchado.png'
+-- );
+
+-- INSERT INTO especificaciones_abriguito (
+--     ID_abriguito,
+--     color,
+--     tamanio,
+--     precio_bruto,
+--     stock,
+--     imagen
+-- ) VALUES (
+--     '31005', 
+--     'Beige',
+--     'l',
+--     '20.00',
+--     '5',
+--     '../img/abrigoacolchado.png'
+-- );
+
+-- INSERT INTO especificaciones_abriguito (
+--     ID_abriguito,
+--     color,
+--     tamanio,
+--     precio_bruto,
+--     stock,
+--     imagen
+-- ) VALUES (
+--     '31005', 
+--     'Beige',
+--     '3xl',
+--     '20.00',
+--     '5',
+--     '../img/abrigoacolchado.png'
+-- );
+
+-- INSERT INTO especificaciones_abriguito (
+--     ID_abriguito,
+--     color,
+--     tamanio,
+--     precio_bruto,
+--     stock,
+--     imagen
+-- ) VALUES (
+--     '34803', 
+--     'Rojo',
+--     's',
+--     '15.00',
+--     '5',
+--     '../img/abrigo-rojo.jpg'
+-- );
+
+-- INSERT INTO especificaciones_abriguito (
+--     ID_abriguito,
+--     color,
+--     tamanio,
+--     precio_bruto,
+--     stock,
+--     imagen
+-- ) VALUES (
+--     '34803', 
+--     'Rojo',
+--     'm',
+--     '15.00',
+--     '5',
+--     '../img/abrigo-rojo.jpg'
+-- );
+
+-- INSERT INTO especificaciones_abriguito (
+--     ID_abriguito,
+--     color,
+--     tamanio,
+--     precio_bruto,
+--     stock,
+--     imagen
+-- ) VALUES (
+--     '34803', 
+--     'Rojo',
+--     'l',
+--     '15.00',
+--     '5',
+--     '../img/abrigo-rojo.jpg'
+-- );
+
+-- INSERT INTO especificaciones_abriguito (
+--     ID_abriguito,
+--     color,
+--     tamanio,
+--     precio_bruto,
+--     stock,
+--     imagen
+-- ) VALUES (
+--     '34803', 
+--     'Rojo',
+--     'xl',
+--     '15.00',
+--     '5',
+--     '../img/abrigo-rojo.jpg'
+-- );
+
+-- INSERT INTO especificaciones_abriguito (
+--     ID_abriguito,
+--     color,
+--     tamanio,
+--     precio_bruto,
+--     stock,
+--     imagen
+-- ) VALUES (
+--     '34803', 
+--     'Rojo',
+--     '2xl',
+--     '15.00',
+--     '5',
+--     '../img/abrigo-rojo.jpg'
+-- );
+
+-- INSERT INTO especificaciones_abriguito (
+--     ID_abriguito,
+--     color,
+--     tamanio,
+--     precio_bruto,
+--     stock,
+--     imagen
+-- ) VALUES (
+--     '34803', 
+--     'Rojo',
+--     '4xl',
+--     '15.00',
+--     '5',
+--     '../img/abrigo-rojo.jpg'
+-- );
+
+-- INSERT INTO especificaciones_abriguito (
+--     ID_abriguito,
+--     color,
+--     tamanio,
+--     precio_bruto,
+--     stock,
+--     imagen
+-- ) VALUES (
+--     '35723', 
+--     'Naranja',
+--     'xxs',
+--     '25.00',
+--     '5',
+--     '../img/abrigo-ej.jpg'
+-- );
+
+-- INSERT INTO especificaciones_abriguito (
+--     ID_abriguito,
+--     color,
+--     tamanio,
+--     precio_bruto,
+--     stock,
+--     imagen
+-- ) VALUES (
+--     '35723', 
+--     'Naranja',
+--     'xs',
+--     '25.00',
+--     '5',
+--     '../img/abrigo-ej.jpg'
+-- );
+
+-- INSERT INTO especificaciones_abriguito (
+--     ID_abriguito,
+--     color,
+--     tamanio,
+--     precio_bruto,
+--     stock,
+--     imagen
+-- ) VALUES (
+--     '35723', 
+--     'Naranja',
+--     's',
+--     '25.00',
+--     '5',
+--     '../img/abrigo-ej.jpg'
+-- );
+
+-- INSERT INTO especificaciones_abriguito (
+--     ID_abriguito,
+--     color,
+--     tamanio,
+--     precio_bruto,
+--     stock,
+--     imagen
+-- ) VALUES (
+--     '35723', 
+--     'Naranja',
+--     'm',
+--     '25.00',
+--     '5',
+--     '../img/abrigo-ej.jpg'
+-- );
+
+-- INSERT INTO especificaciones_abriguito (
+--     ID_abriguito,
+--     color,
+--     tamanio,
+--     precio_bruto,
+--     stock,
+--     imagen
+-- ) VALUES (
+--     '35723', 
+--     'Naranja',
+--     'l',
+--     '25.00',
+--     '5',
+--     '../img/abrigo-ej.jpg'
+-- );
+
+-- INSERT INTO especificaciones_abriguito (
+--     ID_abriguito,
+--     color,
+--     tamanio,
+--     precio_bruto,
+--     stock,
+--     imagen
+-- ) VALUES (
+--     '35723', 
+--     'Naranja',
+--     'xl',
+--     '25.00',
+--     '5',
+--     '../img/abrigo-ej.jpg'
+-- );
+
+-- INSERT INTO especificaciones_abriguito (
+--     ID_abriguito,
+--     color,
+--     tamanio,
+--     precio_bruto,
+--     stock,
+--     imagen
+-- ) VALUES (
+--     '35723', 
+--     'Naranja',
+--     '2xl',
+--     '25.00',
+--     '5',
+--     '../img/abrigo-ej.jpg'
+-- );
+
+-- INSERT INTO especificaciones_abriguito (
+--     ID_abriguito,
+--     color,
+--     tamanio,
+--     precio_bruto,
+--     stock,
+--     imagen
+-- ) VALUES (
+--     '35723', 
+--     'Naranja',
+--     '3xl',
+--     '25.00',
+--     '5',
+--     '../img/abrigo-ej.jpg'
+-- );
+
+-- INSERT INTO especificaciones_abriguito (
+--     ID_abriguito,
+--     color,
+--     tamanio,
+--     precio_bruto,
+--     stock,
+--     imagen
+-- ) VALUES (
+--     '35723', 
+--     'Naranja',
+--     '4xl',
+--     '25.00',
+--     '5',
+--     '../img/abrigo-ej.jpg'
+-- );
+
+-- SELECT * FROM especificaciones_abriguito;
+
+
+
+
+
+-- INSERT INTO direccion (
+--     ID,
+--     ID_usuario,
+--     calle,
+--     nombre_entrega,
+--     estado,
+--     ciudad,
+--     pais,
+--     zipcode
+-- ) VALUES (
+--     '54258', 
+--     '40512',
+--     '34 calle 1',
+--     'Juan Perez',
+--     'California',
+--     'Los Angeles',
+--     'United States',
+--     '90001'
+-- );
+
+-- INSERT INTO direccion (
+--     ID,
+--     ID_usuario,
+--     calle,
+--     nombre_entrega,
+--     estado,
+--     ciudad,
+--     pais,
+--     zipcode
+-- ) VALUES (
+--     '57073', 
+--     '40512',
+--     '7500 Sunset Boulevard',
+--     'Juan Perez',
+--     'California',
+--     'Los Angeles',
+--     'United States',
+--     '90001'
+-- );
+
+-- INSERT INTO direccion (
+--     ID,
+--     ID_usuario,
+--     calle,
+--     nombre_entrega,
+--     estado,
+--     ciudad,
+--     pais,
+--     zipcode
+-- ) VALUES (
+--     '58491', 
+--     '45630',
+--     '789 Calle Libertad',
+--     'Sofia Martinez',
+--     'Cabo San Lucas',
+--     'Villa Alegría',
+--     'Mexico',
+--     '34567'
+-- );
+
+-- INSERT INTO direccion (
+--     ID,
+--     ID_usuario,
+--     calle,
+--     nombre_entrega,
+--     estado,
+--     ciudad,
+--     pais,
+--     zipcode
+-- ) VALUES (
+--     '56806', 
+--     '47566',
+--     '92 calle 7',
+--     'Mateo Peralta',
+--     'Texas',
+--     'Austin',
+--     'United States',
+--     '78701'
+-- );
+
+-- INSERT INTO direccion (
+--     ID,
+--     ID_usuario,
+--     calle,
+--     nombre_entrega,
+--     estado,
+--     ciudad,
+--     pais,
+--     zipcode
+-- ) VALUES (
+--     '55933', 
+--     '47566',
+--     '1500 South Congress Avenue',
+--     'Mateo Peralta',
+--     'Texas',
+--     'Austin',
+--     'United States',
+--     '78701'
+-- );
+
+-- INSERT INTO direccion (
+--     ID,
+--     ID_usuario,
+--     calle,
+--     nombre_entrega,
+--     estado,
+--     ciudad,
+--     pais,
+--     zipcode
+-- ) VALUES (
+--     '54001', 
+--     '47817',
+--     '456 Avenida Siempreviva',
+--     'Pedro Rodriguez',
+--     'Comunidad de Madrid',
+--     'Madrid',
+--     'España',
+--     '28020'
+-- );
+
+-- INSERT INTO direccion (
+--     ID,
+--     ID_usuario,
+--     calle,
+--     nombre_entrega,
+--     estado,
+--     ciudad,
+--     pais,
+--     zipcode
+-- ) VALUES (
+--     '51044', 
+--     '47817',
+--     '32 Gran Vía',
+--     'Pedro Rodriguez',
+--     'Comunidad de Madrid',
+--     'Madrid',
+--     'España',
+--     '28020'
+-- );
+
+-- INSERT INTO direccion (
+--     ID,
+--     ID_usuario,
+--     calle,
+--     nombre_entrega,
+--     estado,
+--     ciudad,
+--     pais,
+--     zipcode
+-- ) VALUES (
+--     '56739', 
+--     '49858',
+--     '123 calle mayor',
+--     'Mariana Gomez',
+--     'Región Metropolitana de Santiago',
+--     'Puente Alto',
+--     'Chile',
+--     '9170000'
+-- );
+
+-- SELECT * FROM direccion;
+
+
+
+
+
+
+
+-- INSERT INTO historial_pedidos (
+--     ID,
+--     fecha_facturacion,
+--     ID_abriguito,
+--     ID_usuario,
+--     ID_direccion,
+--     cantidad,
+--     color,
+--     tamanio,
+--     precio_unidad,
+--     precio_envio,
+--     precio_taxes,
+--     precio_total,
+--     estado_envio,
+--     fecha_entrega
+-- ) VALUES (
+--     '69602', 
+--     '2024-06-25',
+--     '30905',
+--     '45630',
+--     '54258',
+--     '1',
+--     'Gris',
+--     'l',
+--     '30',
+--     '10',
+--     '4',
+--     '44',
+--     'enviado',
+--     '2024-08-25'
+-- );
+
+-- INSERT INTO historial_pedidos (
+--     ID,
+--     fecha_facturacion,
+--     ID_abriguito,
+--     ID_usuario,
+--     ID_direccion,
+--     cantidad,
+--     color,
+--     tamanio,
+--     precio_unidad,
+--     precio_envio,
+--     precio_taxes,
+--     precio_total,
+--     estado_envio,
+--     fecha_entrega
+-- ) VALUES (
+--     '68412', 
+--     '2023-12-14',
+--     '30905',
+--     '47817',
+--     '56806',
+--     '2',
+--     'Gris',
+--     'l',
+--     '30',
+--     '6',
+--     '6.6',
+--     '72.6',
+--     'enviado',
+--     '2024-01-08'
+-- );
+
+-- INSERT INTO historial_pedidos (
+--     ID,
+--     fecha_facturacion,
+--     ID_abriguito,
+--     ID_usuario,
+--     ID_direccion,
+--     cantidad,
+--     color,
+--     tamanio,
+--     precio_unidad,
+--     precio_envio,
+--     precio_taxes,
+--     precio_total,
+--     estado_envio,
+--     fecha_entrega
+-- ) VALUES (
+--     '68287', 
+--     '2024-01-05',
+--     '30905',
+--     '49858',
+--     '54001',
+--     '3',
+--     'Gris',
+--     'l',
+--     '30',
+--     '9',
+--     '9.9',
+--     '108.9',
+--     'pendiente',
+--     '2024-08-01'
+-- );
+
+-- INSERT INTO historial_pedidos (
+--     ID,
+--     fecha_facturacion,
+--     ID_abriguito,
+--     ID_usuario,
+--     ID_direccion,
+--     cantidad,
+--     color,
+--     tamanio,
+--     precio_unidad,
+--     precio_envio,
+--     precio_taxes,
+--     precio_total,
+--     estado_envio,
+--     fecha_entrega
+-- ) VALUES (
+--     '67366', 
+--     '2023-11-20',
+--     '34803',
+--     '49858',
+--     '55933',
+--     '2',
+--     'Rojo',
+--     's',
+--     '15',
+--     '10',
+--     '4',
+--     '44',
+--     'enviado',
+--     '2024-08-15'
+-- );
+
+-- INSERT INTO historial_pedidos (
+--     ID,
+--     fecha_facturacion,
+--     ID_abriguito,
+--     ID_usuario,
+--     ID_direccion,
+--     cantidad,
+--     color,
+--     tamanio,
+--     precio_unidad,
+--     precio_envio,
+--     precio_taxes,
+--     precio_total,
+--     estado_envio,
+--     fecha_entrega
+-- ) VALUES (
+--     '63991', 
+--     '2024-06-20',
+--     '34803',
+--     '47566',
+--     '55933',
+--     '1',
+--     'Rojo',
+--     '2xl',
+--     '15',
+--     '8',
+--     '2.3',
+--     '25.3',
+--     'pendiente',
+--     '2024-07-23'
+-- );
+
+-- INSERT INTO historial_pedidos (
+--         ID,
+--         fecha_facturacion,
+--         ID_abriguito,
+--         ID_usuario,
+--         ID_direccion,
+--         cantidad,
+--         color,
+--         tamanio,
+--         precio_unidad,
+--         precio_envio,
+--         precio_taxes,
+--         precio_total,
+--         estado_envio,
+--         fecha_entrega
+--     ) VALUES (
+--         '64474', 
+--         '2024-06-25',
+--         '34803',
+--         '40512',
+--         '54001',
+--         '1',
+--         'Rojo',
+--         '4xl',
+--         '15',
+--         '9',
+--         '2.4000000000000004',
+--         '26.4',
+--         'entregado',
+--         '2024-08-25'
+--     );
+
+-- INSERT INTO historial_pedidos (
+--         ID,
+--         fecha_facturacion,
+--         ID_abriguito,
+--         ID_usuario,
+--         ID_direccion,
+--         cantidad,
+--         color,
+--         tamanio,
+--         precio_unidad,
+--         precio_envio,
+--         precio_taxes,
+--         precio_total,
+--         estado_envio,
+--         fecha_entrega
+--     ) VALUES (
+--         '65760', 
+--         '2023-12-14',
+--         '30905',
+--         '40512',
+--         '54001',
+--         '2',
+--         'Gris',
+--         '3xl',
+--         '30',
+--         '5',
+--         '6.5',
+--         '71.5',
+--         'entregado',
+--         '2024-01-08'
+--     );
+
+-- INSERT INTO historial_pedidos (
+--         ID,
+--         fecha_facturacion,
+--         ID_abriguito,
+--         ID_usuario,
+--         ID_direccion,
+--         cantidad,
+--         color,
+--         tamanio,
+--         precio_unidad,
+--         precio_envio,
+--         precio_taxes,
+--         precio_total,
+--         estado_envio,
+--         fecha_entrega
+--     ) VALUES (
+--         '65987', 
+--         '2024-01-05',
+--         '30905',
+--         '49858',
+--         '54001',
+--         '2',
+--         'Gris',
+--         'm',
+--         '30',
+--         '7',
+--         '6.7',
+--         '73.7',
+--         'entregado',
+--         '2024-08-01'
+--     );
+
+-- INSERT INTO historial_pedidos (
+--         ID,
+--         fecha_facturacion,
+--         ID_abriguito,
+--         ID_usuario,
+--         ID_direccion,
+--         cantidad,
+--         color,
+--         tamanio,
+--         precio_unidad,
+--         precio_envio,
+--         precio_taxes,
+--         precio_total,
+--         estado_envio,
+--         fecha_entrega
+--     ) VALUES (
+--         '66473', 
+--         '2023-11-20',
+--         '35723',
+--         '47817',
+--         '54001',
+--         '2',
+--         'Naranja',
+--         'xxs',
+--         '25',
+--         '6',
+--         '5.6000000000000005',
+--         '61.6',
+--         'enviado',
+--         '2024-08-20'
+--     );
+
+-- INSERT INTO historial_pedidos (
+--         ID,
+--         fecha_facturacion,
+--         ID_abriguito,
+--         ID_usuario,
+--         ID_direccion,
+--         cantidad,
+--         color,
+--         tamanio,
+--         precio_unidad,
+--         precio_envio,
+--         precio_taxes,
+--         precio_total,
+--         estado_envio,
+--         fecha_entrega
+--     ) VALUES (
+--         '66050', 
+--         '2024-06-20',
+--         '30905',
+--         '45630',
+--         '57073',
+--         '2',
+--         'Gris',
+--         '2xl',
+--         '30',
+--         '9',
+--         '6.9',
+--         '75.9',
+--         'enviado',
+--         '2024-06-25'
+--     );
+
+-- SELECT * FROM historial_pedidos;
+
+
+
+
+
+
+
+-- INSERT INTO favoritos (
+--         ID,
+--         ID_usuario,
+--         ID_abriguito,
+--         color,
+--         tamanio         
+--     ) VALUES (
+--         '70164', 
+--         '40512',
+--         '31005',
+--         'Beige',
+--         's'
+--     );
+
+-- INSERT INTO favoritos (
+--         ID,
+--         ID_usuario,
+--         ID_abriguito,
+--         color,
+--         tamanio         
+--     ) VALUES (
+--         '70171', 
+--         '40512',
+--         '31005',
+--         'Beige',
+--         'l'
+--     );
+
+-- INSERT INTO favoritos (
+--         ID,
+--         ID_usuario,
+--         ID_abriguito,
+--         color,
+--         tamanio         
+--     ) VALUES (
+--         '77679', 
+--         '45630',
+--         '30905',
+--         'Gris',
+--         'xs'
+--     );
+
+-- INSERT INTO favoritos (
+--         ID,
+--         ID_usuario,
+--         ID_abriguito,
+--         color,
+--         tamanio         
+--     ) VALUES (
+--         '75553', 
+--         '47817',
+--         '35723',
+--         'Naranja',
+--         '3xl'
+--     );
+
+-- INSERT INTO favoritos (
+--         ID,
+--         ID_usuario,
+--         ID_abriguito,
+--         color,
+--         tamanio         
+--     ) VALUES (
+--         '74791', 
+--         '47566',
+--         '34803',
+--         'Rojo',
+--         's'
+--     );
+
+-- INSERT INTO favoritos (
+--         ID,
+--         ID_usuario,
+--         ID_abriguito,
+--         color,
+--         tamanio         
+--     ) VALUES (
+--         '76936', 
+--         '45630',
+--         '35723',
+--         'Naranja',
+--         '3xl'
+--     );
+
+-- INSERT INTO favoritos (
+--         ID,
+--         ID_usuario,
+--         ID_abriguito,
+--         color,
+--         tamanio         
+--     ) VALUES (
+--         '79563', 
+--         '47817',
+--         '35723',
+--         'Naranja',
+--         's'
+--     );
+
+-- INSERT INTO favoritos (
+--         ID,
+--         ID_usuario,
+--         ID_abriguito,
+--         color,
+--         tamanio         
+--     ) VALUES (
+--         '78202', 
+--         '49858',
+--         '30905',
+--         'Gris',
+--         '2xl'
+--     );
+
+-- INSERT INTO favoritos (
+--         ID,
+--         ID_usuario,
+--         ID_abriguito,
+--         color,
+--         tamanio         
+--     ) VALUES (
+--         '77508', 
+--         '49858',
+--         '30905',
+--         'Gris',
+--         'l'
+--     );
+
+-- SELECT * FROM favoritos;
+
+-- DELETE FROM especificaciones_abriguito 
+-- WHERE ID_abriguito IN ('3123', '3125', '3126'); 
+
+-- DELETE FROM abriguitos WHERE ID in ('3123', '3125', '3126');
+
+-- DELETE FROM marcas WHERE nombre_marca in ('verde');
+
+-- DELETE FROM tipos WHERE nombre_tipo in ('a');
+
+
+
+-- SELECT 
+--     abriguitos.ID, 
+--     abriguitos.nombre AS nombre_abrigo, 
+--     marcas.nombre_marca, 
+--     tipos.nombre_tipo,
+--     especificaciones_abriguito.color,
+--     especificaciones_abriguito.tamanio,
+--     especificaciones_abriguito.precio_bruto,
+--     especificaciones_abriguito.imagen
+-- FROM abriguitos
+-- JOIN marcas ON abriguitos.ID_marca = marcas.ID_marca
+-- JOIN tipos ON abriguitos.ID_tipo = tipos.ID_tipo
+-- JOIN especificaciones_abriguito ON abriguitos.ID = especificaciones_abriguito.ID_abriguito;
+
+-- SELECT 
+--     abriguitos.ID, 
+--     abriguitos.nombre AS nombre_abrigo, 
+--     marcas.nombre_marca, 
+--     tipos.nombre_tipo, 
+--     especificaciones_abriguito.color, 
+--     especificaciones_abriguito.tamanio, 
+--     especificaciones_abriguito.precio_bruto, 
+--     especificaciones_abriguito.imagen 
+-- FROM abriguitos
+-- JOIN marcas ON abriguitos.ID_marca = marcas.ID_marca
+-- JOIN tipos ON abriguitos.ID_tipo = tipos.ID_tipo
+-- JOIN especificaciones_abriguito ON abriguitos.ID = especificaciones_abriguito.ID_abriguito
+-- WHERE abriguitos.ID = 35723 
+-- ORDER BY abriguitos.ID; 
+
+
+
+-- ALTER TABLE especificaciones_abriguito
+-- DROP COLUMN imagen;
+
+-- ALTER TABLE especificaciones_abriguito
+-- ADD COLUMN imagen VARCHAR(250);
+
+SELECT * FROM especificaciones_abriguito;
+
+-- UPDATE especificaciones_abriguito
+-- SET imagen = '../img/abrigo-ej.jpg' 
+-- WHERE id_abriguito = '35723'; 
+
+-- UPDATE especificaciones_abriguito
+-- SET imagen = '../img/abrigo-gris.jpg' 
+-- WHERE id_abriguito = '30905';
+
+-- UPDATE especificaciones_abriguito
+-- SET imagen = '../img/abrigoacolchado.png' 
+-- WHERE id_abriguito = '31005';
+
+-- UPDATE especificaciones_abriguito
+-- SET imagen = '../img/abrigo-rojo.jpg' 
+-- WHERE id_abriguito = '34803';

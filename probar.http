@@ -1,0 +1,18 @@
+POST http://localhost:3300/abriguitos
+
+Content-Type: application/json
+Method: POST
+
+
+{
+    "ID_marca": "2123",
+    "nombre_marca": "verde",
+    "ID_tipo": "1123",
+    "ID": "3123",
+    "nombre": "abrigo verdito",
+    "color": "verde",
+    "tamanio": "xs",
+    "precio": "50.00",
+    "stock": "5",
+    "imagen": "https://www.allegra-k.com/cdn/shop/files/ux_a22031100ux0384_ux_d01_720x.jpg?v=1704854046"
+}

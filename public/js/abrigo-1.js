@@ -2,7 +2,7 @@ const contenedorTargetas = document.getElementById("abriguitos");
 
 async function obtenerAbrigos() {
     try {
-        const response = await fetch('/abrigos');
+        const response = await fetch('/abriguitos');
         const productos = await response.json(); 
         crearTarjetas(productos);
     } catch (error) {
@@ -12,6 +12,7 @@ async function obtenerAbrigos() {
 
 function crearTarjetas(productos) {
     productos.forEach((producto) => {
+
         const nuevoAbrigo = document.createElement("div");
         nuevoAbrigo.classList = "item";
         nuevoAbrigo.innerHTML = `
@@ -19,7 +20,7 @@ function crearTarjetas(productos) {
 <div class="elemento ${producto.color}">     
     <div class="icon-item-corazon">
         <div class="icon-item">
-            <button class="carritoAniadir" onclick="addCar( '${producto.id}' ,'${producto.imagen}', '${producto.nombre}', ${producto.precio})">
+            <button class="carritoAniadir" onclick="addCar( '${producto.ID}' ,'${producto.imagen}', '${producto.nombre_abrigo}', ${producto.precio_bruto})">
                 <span class="material-symbols-outlined shopping-cart-item">
                     add_shopping_cart
                     </span>
@@ -31,33 +32,27 @@ function crearTarjetas(productos) {
             </button>
         </div>
         <div class="corazon-1">
-            <input class="heart" type="checkbox" id="heart${producto.id}">
-            <label class="label" for="heart${producto.id}"></label>
+            <input class="heart" type="checkbox" id="heart${producto.ID}${producto.tamanio}">
+            <label class="label" for="heart${producto.ID}${producto.tamanio}"></label>
         </div>
     </div>
     <div class="imagen">
         <img src="${producto.imagen}" alt="abriguito">
     </div>
-    <h3><center>${producto.nombre}</center></h3>
-    <p id="precio">$${producto.precio}.00</p>
-    <p class="marca">${producto.marca}</p>
+    <h3><center>${producto.nombre_abrigo}</center></h3>
+    <p id="precio">$${producto.precio_bruto}.00</p>
+    <p class="marca">${producto.nombre_marca}</p>
     <div class="especificaciones">
         <div id="size">
             <p>Size</p>
             <select name="Size" id="sizeSelect">
-                <option value="${producto.size[0]}">${producto.size[0]}</option>
-                <option value="${producto.size[1]}">${producto.size[1]}</option>
-                <option value="${producto.size[2]}">${producto.size[2]}</option>
-                <option value="${producto.size[3]}">${producto.size[3]}</option>
-                <option value="${producto.size[4]}">${producto.size[4]}</option>
-                <option value="${producto.size[5]}">${producto.size[5]}</option>
-                <option value="${producto.size[6]}">${producto.size[6]}</option>
-                </select>
+                <option value="${producto.tamanio}">${producto.tamanio}</option>
+            </select>
         </div>
         <div id="tipo">
             <p>Tipo</p>
             <select name="Tipo">
-                <option value="${producto.tipo}">${producto.tipo}</option>
+                <option value="${producto.nombre_tipo}">${producto.nombre_tipo}</option>
             </select>
         </div>
         <div id="color">
@@ -68,7 +63,6 @@ function crearTarjetas(productos) {
         </div>
     </div>
 </div>
-
             `;
         contenedorTargetas.appendChild(nuevoAbrigo);
     });
@@ -301,16 +295,18 @@ let paisRegister = document.getElementById('paisRegister');
 let zipcodeRegister = document.getElementById('zipcodeRegister');
 
 let usuarios = [];
+let calleYCorreo = '';
 
 class Usuario {
     constructor(nombre, apellido, correo, telefono, contrasena, calle, nombre_entrega, estado, ciudad, pais, zipcode ) {
-        this.id = generarID(correo);
+        this.id = (generarID(correo)) + 40000;
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
         this.telefono = telefono;
         this.contrasena = contrasena;
-        this.ID_direccion = generarID(`${calle}${nombre_entrega}`);
+        calleYCorreo = (eliminarEspacios(`${calle}${correo}`)) + 50000;
+        this.ID_direccion = generarID(calleYCorreo);
         this.calle = calle;
         this.nombre_entrega = nombre_entrega;
         this.estado = estado;
@@ -349,6 +345,7 @@ function formatoTelefono (input) {
         let telefonoConFormato = `(${parte1}) ${parte2} - ${parte3}`;
 
         return telefonoConFormato;
+
     } else if (input.length === 11) {
         let numeroString = input.toString();
         numeroString = numeroString.slice(0, 11);
@@ -360,9 +357,26 @@ function formatoTelefono (input) {
         let telefonoConFormato = `+${parte0} (${parte1}) ${parte2} - ${parte3}`;
 
         return telefonoConFormato;
+
+    } else if (input.length === 12) {
+        let numeroString = input.toString();
+        numeroString = numeroString.slice(0, 12);
+        let parte0 = numeroString.slice(0, 2);
+        let parte1 = numeroString.slice(2, 5);
+        let parte2 = numeroString.slice(5, 8);
+        let parte3 = numeroString.slice(8);
+
+        let telefonoConFormato = `+${parte0} (${parte1}) ${parte2} - ${parte3}`;
+
+        return telefonoConFormato;
+
     } else {
         alert('Escriba el telefono completo (los 10 numeros) sin guiones, ni espacios, ni signos');
     }
+}
+
+function eliminarEspacios (text) {
+    return text.split(' ').join('');
 }
 
 function mayusculaPrimeraLetra1 (str) {
@@ -441,8 +455,8 @@ formularioAcceder.addEventListener('submit', event => {
                         info.innerHTML = `
                         <table>
                                 <tr>
-                                    <td>ID:</td>
-                                    <td>${data.id}</td>
+                                    <td >ID:</td>
+                                    <td id="IDVerificar">${data.id}</td>
                                 </tr>
                                 <tr>
                                     <td>Nombre y Apellido:</td>
@@ -458,7 +472,11 @@ formularioAcceder.addEventListener('submit', event => {
                                 </tr>
                                 <tr>
                                     <td>Contrasena:</td>
-                                    <td>${data.contrasena}</td>
+                                    <td id="contrasenaVerificar">${data.contrasena}</td>
+                                </tr>
+                                <tr>
+                                    <td>ID Direccion:</td>
+                                    <td>${data.ID_direccion}</td>
                                 </tr>
                                 <tr>
                                     <td>Direccion:</td>
@@ -491,6 +509,9 @@ const btnEliminarCuenta = document.getElementById("eliminarCuenta");
 const cuadroEliminarCuenta = document.getElementById("cuadroDELETE");
 const ocultarCuadroEliminarCuenta = document.getElementById("ocultarEliminarcuenta");
 const formularioEliminarCuenta = document.getElementById("formularioDELETE");
+const contrasenaDELETE = document.getElementById("contrasenaDELETE").value;
+const contrasenaVerificar = document.getElementById("contrasenaVerificar").value;
+const IDVerificar = document.getElementById("IDVerificar").value;
 
 btnEliminarCuenta.addEventListener('click', () => {
     cuadroEliminarCuenta.style.left = 0;
@@ -503,12 +524,11 @@ ocultarCuadroEliminarCuenta.addEventListener('click', () => {
 formularioEliminarCuenta.addEventListener('submit', (event) => {
     event.preventDefault();
 
+    const idDELETE = document.getElementById("idDELETE").value;
     let respuesta = confirm("¿Deseas Eliminar tu cuenta de forma definitiva? No hay vuelta atras");
 
     if (respuesta == true) {
-        const idDELETE = document.getElementById("idDELETE").value;
-
-        if (idDELETE && idDELETE !== "") {
+        if ((idDELETE == IDVerificar) && (idDELETE !== "") && (contrasenaDELETE == contrasenaVerificar)) {
             fetch(`/usuarios/${idDELETE}`, {
                 method: 'DELETE',
             })
@@ -527,13 +547,14 @@ formularioEliminarCuenta.addEventListener('submit', (event) => {
                     alert("Error de sintaxis en la respuesta del servidor");
                 } else {
                     console.error(error);
-                    alert("Error al eliminar cuenta. Contacta al soporte técnico");
+                    alert("Error al eliminar cuenta");
                 }
             })
         } else {
-            alert("Error: ID de usuario inválido");
+            alert("Error: ID de usuario inválido o contrasena incorrecta");
         }
     } else {
         cuadroEliminarCuenta.style.left = "-100vw";
+        alert("Cuenta no eliminada");
     }
 })

@@ -1,35 +1,10 @@
 const express = require('express');
-const fs = require('fs');
-const bodyParser = require('body-parser');
 const app = express();
-const path = require('path')
+const path = require('path');
+const pool = require('./db');
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
-
-
-
-// READ y WRITE FILE ///////////////////////////////
-
-const readData = function() {
-    const data = fs.readFileSync("./abrigos.json");
-    return JSON.parse(data);
-}
-
-const writeData = function(data) {
-    fs.writeFileSync("./abrigos.json", JSON.stringify(data));
-}
-
-const readDataUser = function() {
-    const data = fs.readFileSync("./usuarios.json");
-    return JSON.parse(data);
-}
-
-const writeDataUser = function(data) {
-    fs.writeFileSync("./usuarios.json", JSON.stringify(data));
-}
-
-
 
 // Contactos a los diferentes htmls /////////////////////
 
@@ -62,30 +37,76 @@ app.get('/miCuenta', (req, res) => {
 
 // Metodos para abrigos.json
 
-app.get("/abrigos", (req, res) => {
-    const data = readData();
-    res.json(data.abrigos);
+app.get("/abriguitos", (req, res) => {
+    pool.query('SELECT abriguitos.ID, abriguitos.nombre AS nombre_abrigo, marcas.nombre_marca, tipos.nombre_tipo, especificaciones_abriguito.color, especificaciones_abriguito.tamanio, especificaciones_abriguito.precio_bruto, especificaciones_abriguito.imagen FROM abriguitos JOIN marcas ON abriguitos.ID_marca = marcas.ID_marca JOIN tipos ON abriguitos.ID_tipo = tipos.ID_tipo JOIN especificaciones_abriguito ON abriguitos.ID = especificaciones_abriguito.ID_abriguito;', (err, results) => {
+        if (err) throw err;
+        res.json(results)
+    })
 });
 
-app.get("/abrigos/:id", (req, res) => {
-    const data = readData();
+app.get("/abriguitos/:id", (req, res) => {
     const id = req.params.id;
-    const abrigo = data.abrigos.find((abrigo) => {
-        return abrigo.id === id;
+    pool.query('SELECT abriguitos.ID, abriguitos.nombre AS nombre_abrigo, marcas.nombre_marca, tipos.nombre_tipo, especificaciones_abriguito.color, especificaciones_abriguito.tamanio, especificaciones_abriguito.precio_bruto, especificaciones_abriguito.imagen FROM abriguitos JOIN marcas ON abriguitos.ID_marca = marcas.ID_marca JOIN tipos ON abriguitos.ID_tipo = tipos.ID_tipo JOIN especificaciones_abriguito ON abriguitos.ID = especificaciones_abriguito.ID_abriguito WHERE abriguitos.ID = ? ORDER BY abriguitos.ID; ;', [id], (err, results) => {
+        if (err) throw err;
+        res.json(results);
     });
-
-    res.json(abrigo);
 });
 
-app.post("/abrigos", (req, res) => {
-    const data = readData();
-    const body = req.body;
-    const newabrigo = {
-        ...body,
-    };
-    data.abrigos.push(newabrigo);
-    writeData(data);
-    res.json(newabrigo);
+app.post("/abriguitos", (req, res) => {
+    const { ID_marca,
+        nombre_marca,
+        ID_tipo,
+        nombre_tipo,
+        ID,
+        nombre,
+        color,
+        tamanio,
+        precio,
+        stock,
+        imagen } = req.body;
+    pool.query(`INSERT INTO marcas (
+        ID_marca, 
+        nombre_marca
+    ) VALUES (
+        '${ID_marca}', 
+        '${nombre_marca}' 
+    );
+    INSERT INTO tipos (
+        ID_tipo,
+        nombre_tipo
+    ) VALUES (
+        '${ID_tipo}', 
+        '${nombre_tipo}'
+    );
+    INSERT INTO abriguitos (
+        ID,
+        nombre,
+        ID_marca,
+        ID_tipo
+    ) VALUES (
+        '${ID}', 
+        '${nombre}',
+        '${ID_marca}',
+        '${ID_tipo}'
+    );
+    INSERT INTO especificaciones_abriguito (
+        ID_abriguito,
+        color,
+        tamanio,
+        precio_bruto,
+        stock,
+        imagen
+    ) VALUES (
+        '${ID}', 
+        '${color}',
+        '${tamanio}',
+        '${precio}',
+        '${stock}',
+        '${imagen}'
+    );`, (err, results) => {
+        if (err) throw err;
+        res.json(results)
+    })
 });
 
 app.put("/abrigos/:id", (req, res) => {
